@@ -1,16 +1,13 @@
 const mongoose = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 const bcrypt = require('bcrypt');
-const Order = require('./Order');
+const Store = require('./Store');
+const List = require('./List');
 
 const userSchema = new Schema({
-  firstName: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  lastName: {
+  username: {
     type: String,
     required: true,
     trim: true
@@ -18,14 +15,32 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    match: [/.+@.+\..+/, 'Must match an email address!']
   },
   password: {
     type: String,
     required: true,
     minlength: 5
   },
-  orders: [Order.schema]
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: timestamp => dateFormat(timestamp)
+  },
+  // orders: [Order.schema],
+  stores: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Store'
+    }
+  ],
+  lists: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'List'
+    }
+  ],
 });
 
 // set up pre-save middleware to create password
@@ -46,4 +61,3 @@ userSchema.methods.isCorrectPassword = async function(password) {
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
-// 
