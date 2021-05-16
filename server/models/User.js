@@ -1,3 +1,5 @@
+// Cori: Great start for our user model, I don't think we need to change much
+
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;

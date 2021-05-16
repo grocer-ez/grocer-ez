@@ -1,20 +1,22 @@
+// Cori: I think we can rename this model into our History.js file that will hold the structure for our history
+
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const orderSchema = new Schema({
+const historySchema = new Schema({
   purchaseDate: {
     type: Date,
     default: Date.now
   },
-  products: [
+  items: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Product'
+      ref: 'List'
     }
   ]
 });
 
-const Order = mongoose.model('Order', orderSchema);
+const Store = mongoose.model('Store', historySchema);
 
-module.exports = Order;
+module.exports = History;

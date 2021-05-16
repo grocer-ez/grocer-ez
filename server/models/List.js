@@ -1,20 +1,20 @@
+// Cori: I think we can rename this model to hold our list items?
+
 const mongoose = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const { Schema } = mongoose;
 
-const productSchema = new Schema({
-  name: {
+const listSchema = new Schema({
+  item: {
     type: String,
     required: true,
     trim: true
   },
-  description: {
+  username: {
     type: String
   },
-  image: {
-    type: String
-  },
-  price: {
+  createdAT: {
     type: Number,
     required: true,
     min: 0.99
@@ -31,6 +31,6 @@ const productSchema = new Schema({
   }
 });
 
-const Product = mongoose.model('Product', productSchema);
+const List = mongoose.model('List', listSchema);
 
-module.exports = Product;
+module.exports = List;
