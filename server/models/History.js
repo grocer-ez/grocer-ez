@@ -9,7 +9,7 @@ const historySchema = new Schema({
     type: Date,
     default: Date.now
   },
-  items: [
+  list: [
     {
       type: Schema.Types.ObjectId,
       ref: 'List'
@@ -17,6 +17,6 @@ const historySchema = new Schema({
   ]
 });
 
-const Store = mongoose.model('Store', historySchema);
+const History = mongoose.model('History', historySchema);
 
 module.exports = History;

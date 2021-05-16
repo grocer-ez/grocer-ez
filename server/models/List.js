@@ -24,9 +24,9 @@ const listSchema = new Schema({
     min: 0,
     default: 0
   },
-  category: {
+  store: {
     type: Schema.Types.ObjectId,
-    ref: 'Category',
+    ref: 'Store',
     required: true
   }
 });
