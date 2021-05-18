@@ -68,3 +68,27 @@ export const QUERY_USER = gql`
   }
 }
 `;
+
+// export const QUERY_USER = gql `
+//   {
+//     user{ 
+//       username
+//       stores{
+//         _id
+//         list{
+//           _id
+//         }
+//       }
+//     }
+//   }
+// `;
+
+// export const QUERY_LIST = gql`
+
+// `;
+
+// export const QUERY_STORE = gql`
+
+// `;
+
+// export const QUERY_HISTORY = gql ``;

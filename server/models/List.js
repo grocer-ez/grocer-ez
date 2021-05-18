@@ -45,7 +45,6 @@ const listSchema = new Schema({
     required: true,
     trim: true
   },
-  
   quantity: {
     type: Number,
     min: 0,
