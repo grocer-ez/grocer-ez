@@ -36,8 +36,10 @@
 // module.exports = Product;
 const mongoose = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
+const storeSchema = require('./Store');
 
 const { Schema } = mongoose;
+
 
 const listSchema = new Schema({
   item: {
@@ -45,7 +47,6 @@ const listSchema = new Schema({
     required: true,
     trim: true
   },
-  
   quantity: {
     type: Number,
     min: 0,
@@ -60,10 +61,11 @@ const listSchema = new Schema({
     default: Date.now,
     get: timestamp => dateFormat(timestamp)
   },
+  stores: [storeSchema]
 });
 // 
 
+const List = mongoose.model('List', listSchema);
 
-module.exports = listSchema;
 
-
+module.exports = List;
