@@ -36,8 +36,10 @@
 // module.exports = Product;
 const mongoose = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
+const storeSchema = require('./Store');
 
 const { Schema } = mongoose;
+
 
 const listSchema = new Schema({
   item: {
@@ -59,6 +61,7 @@ const listSchema = new Schema({
     default: Date.now,
     get: timestamp => dateFormat(timestamp)
   },
+  stores: [storeSchema]
 });
 // 
 
