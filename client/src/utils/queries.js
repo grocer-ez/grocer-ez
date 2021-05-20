@@ -75,7 +75,7 @@ export const QUERY_USER = gql `
       username
       stores{
         _id
-        list{
+        lists{
           _id
         }
       }

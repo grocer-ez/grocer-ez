@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const { Schema, model } = mongoose;
+const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Store = require('./Store');
-const List = require('./List');
 
 const userSchema = new Schema({
   username: {
