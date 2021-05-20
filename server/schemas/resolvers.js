@@ -17,15 +17,15 @@ const resolvers = {
       return new AuthenticationError('Not Loggerd In!');
     },
 
-    stores: async () => {
-      return await Store.find();
+    categories: async () => {
+      return await Category.find();
     },
     
-    lists: async (parent, { store, name }) => {
+    products: async (parent, { category, name }) => {
       const params = {};
 
-      if (store) {
-        params.store = store;
+      if (category) {
+        params.category = category;
       }
 
       if (name) {
@@ -34,16 +34,16 @@ const resolvers = {
         };
       }f
 
-      return await List.find(params).populate('store');
+      return await Product.find(params).populate('category');
     },
-    list: async (parent, { _id }) => {
-      return await List.findById(_id).populate('store');
+    product: async (parent, { _id }) => {
+      return await Product.findById(_id).populate('category');
     },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'stores.list',
-          populate: 'store',
+          path: 'orders.products',
+          populate: 'category',
           // populate: 'stores'
         });
 
@@ -150,4 +150,3 @@ const resolvers = {
 };
 
 module.exports = resolvers;
-
