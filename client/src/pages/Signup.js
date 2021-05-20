@@ -29,7 +29,7 @@ function Signup(props) {
 
   return (
     <div className="container my-1">
-      <Link to="/login">
+      <Link to="/">
         ← Go to Login
       </Link>
 
@@ -38,7 +38,7 @@ function Signup(props) {
         <div className="flex-row space-between my-2">
           <label htmlFor="username">Username:</label>
           <input
-            placeholder="Last"
+            placeholder="Username"
             name="username"
             type="username"
             id="username"

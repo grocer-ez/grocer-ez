@@ -30,7 +30,7 @@ function Nav() {
             </Link>
           </li>
           <li className="mx-1">
-            <Link to="/login">
+            <Link to="/">
               Login
             </Link>
           </li>
@@ -42,7 +42,7 @@ function Nav() {
   return (
     <header className="flex-row px-1">
       <h1>
-        <Link to="/">
+        <Link to="/home">
           <span role="img" aria-label="shopping bag">🛍️</span>
           Grocer-Ez
         </Link>
