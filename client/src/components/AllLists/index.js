@@ -1,60 +1,90 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { pluralize } from "../../utils/helpers"
-import { useStoreContext } from "../../utils/GlobalState";
-import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
-import { idbPromise } from "../../utils/helpers";
-
-function ProductItem(item) {
-  const [state, dispatch] = useStoreContext();
-
-  const {
-    image,
-    name,
-    _id,
-    price,
-    quantity
-  } = item;
-
-  const { cart } = state
-
-  const addToCart = () => {
-    const itemInCart = cart.find((cartItem) => cartItem._id === _id)
-    if (itemInCart) {
-      dispatch({
-        type: UPDATE_CART_QUANTITY,
-        _id: _id,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-      });
-      idbPromise('cart', 'put', {
-        ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-      });
-    } else {
-      dispatch({
-        type: ADD_TO_CART,
-        product: { ...item, purchaseQuantity: 1 }
-      });
-      idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
-    }
-  }
-
+const Home = () => {
+  // useState
+  // useEffect grab data, populate your state
+  // contains all stored lists.
+  const listArray = [
+    {id: "something", name: "Ralphs", createdAt:"someDate", lists: ["lettuce", "cabbage"]},
+    {id: "something1", name: "Safeway", createdAt:"someDate", lists: ["wine", "cheese"]},
+    {id: "something2", name: "Frys", createdAt:"someDate", lists: ["computer parts", "comic books"]}
+  ]
   return (
-    <div className="card px-1 py-1">
-      <Link to={`/products/${_id}`}>
-        <img
-          alt={name}
-          src={`/images/${image}`}
-        />
-        <p>{name}</p>
-      </Link>
-      <div>
-        <div>{quantity} {pluralize("item", quantity)} in stock</div>
-        <span>${price}</span>
-      </div>
-      <button onClick={addToCart}>Add to cart</button>
+    <div className="container">
+      <h1>test</h1>
+      {
+        listArray.map((element)=>{
+          return <>
+            <div className="card" style={{width: "18rem", backgroundColor:"lightgreen"}}>
+              <img className="card-img-top" src="..." alt="Card image cap"/>
+              <div className="card-body">
+                <h5 className="card-title">{element.name}</h5>
+                {/* this link needs to use the store id somehow */}
+                <a href="/thislist/0" className="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </>
+        })
+      }
     </div>
   );
-}
+};
+export default Home;
 
-export default ProductItem;
+// // import React, { useEffect } from 'react';
+// // import { useQuery } from '@apollo/react-hooks';
+// // import { useStoreContext } from '../../utils/GlobalState';
+// // import { UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY } from '../../utils/actions';
+// // import { QUERY_CATEGORIES } from '../../utils/queries';
+// // import { idbPromise } from '../../utils/helpers';
+
+// // function CategoryMenu() {
+// //   const [state, dispatch] = useStoreContext();
+
+// //   const { categories } = state;
+
+// //   const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
+
+// //   useEffect(() => {
+// //     if (categoryData) {
+// //       dispatch({
+// //         type: UPDATE_CATEGORIES,
+// //         categories: categoryData.categories
+// //       });
+// //       categoryData.categories.forEach(category => {
+// //         idbPromise('categories', 'put', category);
+// //       });
+// //     } else if (!loading) {
+// //       idbPromise('categories', 'get').then(categories => {
+// //         dispatch({
+// //           type: UPDATE_CATEGORIES,
+// //           categories: categories
+// //         });
+// //       });
+// //     }
+// //   }, [categoryData, loading, dispatch]);
+
+// //   const handleClick = id => {
+// //     dispatch({
+// //       type: UPDATE_CURRENT_CATEGORY,
+// //       currentCategory: id
+// //     });
+// //   };
+
+// //   return (
+// //     <div>
+// //       <h2>Choose a Category:</h2>
+// //       {categories.map(item => (
+// //         <button
+// //           key={item._id}
+// //           onClick={() => {
+// //             handleClick(item._id);
+// //           }}
+// //         >
+// //           {item.name}
+// //         </button>
+// //       ))}
+// //     </div>
+// //   );
+// // }
+
+// // export default CategoryMenu;

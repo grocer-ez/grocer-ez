@@ -1,58 +1,69 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
+import ProductItem from "../ProductItem";
+import { useStoreContext } from "../../utils/GlobalState";
+import { UPDATE_PRODUCTS } from "../../utils/actions";
 import { useQuery } from '@apollo/react-hooks';
-import { useStoreContext } from '../../utils/GlobalState';
-import { UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY } from '../../utils/actions';
-import { QUERY_CATEGORIES } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
+import { QUERY_PRODUCTS } from "../../utils/queries";
+import { idbPromise } from "../../utils/helpers";
+import spinner from "../../assets/spinner.gif"
 
-function CategoryMenu() {
+function ProductList() {
   const [state, dispatch] = useStoreContext();
 
-  const { categories } = state;
+  const { currentCategory } = state;
 
-  const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
+  const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   useEffect(() => {
-    if (categoryData) {
+    if(data) {
       dispatch({
-        type: UPDATE_CATEGORIES,
-        categories: categoryData.categories
-      });
-      categoryData.categories.forEach(category => {
-        idbPromise('categories', 'put', category);
-      });
-    } else if (!loading) {
-      idbPromise('categories', 'get').then(categories => {
-        dispatch({
-          type: UPDATE_CATEGORIES,
-          categories: categories
+           type: UPDATE_PRODUCTS,
+          products: data.products
         });
+        data.products.forEach((product) => {
+          idbPromise('products', 'put', product);
+        });
+    } else if (!loading) {
+      idbPromise('products', 'get').then((products) => {
+        dispatch({
+          type: UPDATE_PRODUCTS,
+         products: products
+       });
       });
     }
-  }, [categoryData, loading, dispatch]);
+  }, [data, loading, dispatch]);
 
-  const handleClick = id => {
-    dispatch({
-      type: UPDATE_CURRENT_CATEGORY,
-      currentCategory: id
-    });
-  };
+  function filterProducts() {
+    if (!currentCategory) {
+      return state.products;
+    }
+
+    return state.products.filter(product => product.category._id === currentCategory);
+  }
 
   return (
-    <div>
-      <h2>Choose a Category:</h2>
-      {categories.map(item => (
-        <button
-          key={item._id}
-          onClick={() => {
-            handleClick(item._id);
-          }}
-        >
-          {item.name}
-        </button>
-      ))}
+    <div className="my-2">
+      <h2>Our Products:</h2>
+      {state.products.length ? (
+        <div className="flex-row">
+            {filterProducts().map(product => (
+                <ProductItem
+                  key= {product._id}
+                  _id={product._id}
+                  image={product.image}
+                  name={product.name}
+                  price={product.price}
+                  quantity={product.quantity}
+                />
+            ))}
+        </div>
+      ) : (
+        <h3>You haven't added any products yet!</h3>
+      )}
+      { loading ? 
+      <img src={spinner} alt="loading" />: null}
     </div>
   );
 }
 
-export default CategoryMenu;
+export default ProductList;
