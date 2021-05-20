@@ -61,9 +61,10 @@ const listSchema = new Schema({
     get: timestamp => dateFormat(timestamp)
   },
 });
-// 
+
 // const List = mongoose.model('List', listSchema);
 
 module.exports = listSchema;
+
 
 

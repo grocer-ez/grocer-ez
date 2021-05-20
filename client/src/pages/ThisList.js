@@ -16,7 +16,7 @@ function ThisList() {
     return (
       <>
         <div className="container my-1">
-          <Link to="/">
+          <Link to="/home">
             ← Back to Lists
             </Link>
   
