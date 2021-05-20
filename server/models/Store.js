@@ -1,22 +1,6 @@
-// const mongoose = require('mongoose');
-
-// const { Schema } = mongoose;
-
-// const categorySchema = new Schema({
-//   name: {
-//     type: String,
-//     required: true,
-//     trim: true
-//   }
-// });
-
-// const Category = mongoose.model('Category', categorySchema);
-
-// module.exports = Category;
-
 const mongoose = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
-const listSchema = require('./List')
+
 
 const { Schema } = mongoose;
 
@@ -34,7 +18,7 @@ const storeSchema = new Schema({
   username: {
     type: String,    
   },
-  lists: [listSchema]
+  list: [{ item: String, quantity: Number}]
 });
 
 const Store = mongoose.model('Store', storeSchema);

@@ -10,7 +10,13 @@ const typeDefs = gql`
     name: String
     username: String
     createdAt: String
-    lists: [List]
+    list: [List]         
+  }
+
+  type List{
+    _id: ID
+    item: String
+    quantity: Int
   }
 
   type Product {
@@ -22,14 +28,7 @@ const typeDefs = gql`
     price: Float
     category: Category
   }
-  type List{
-    _id: ID
-    item: String
-    quantity: Int
-    username: String
-    createdAt: String    
-    store: [Store]
-  }
+
 
   type Order {
     _id: ID
