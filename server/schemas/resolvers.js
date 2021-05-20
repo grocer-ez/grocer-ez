@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, List, Store, Order } = require('../models');
+const { User, Store, Order } = require('../models');
 const { populate } = require('../models/Store');
 const { signToken } = require('../utils/auth');
 
@@ -32,7 +32,7 @@ const resolvers = {
         params.name = {
           $regex: name
         };
-      }
+      }f
 
       return await List.find(params).populate('store');
     },
@@ -132,19 +132,19 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addList: async (parent, { storeId, item, quantity }, context) => {
-      if (context.user) {
-        const updatedList = await Store.findOneAndUpdate(
-          { _id: storeId },
-          { $push: { lists: { item, quantity, username: context.user._id } } },
-          { new: true, runValidators: true }
-        );
+    // addList: async (parent, { storeId, item, quantity }, context) => {
+    //   if (context.user) {
+    //     const updatedList = await Store.findOneAndUpdate(
+    //       { _id: storeId },
+    //       { $push: { lists: { item, quantity, username: context.user._id } } },
+    //       { new: true, runValidators: true }
+    //     );
 
-        return updatedList;
-      }
+    //     return updatedList;
+    //   }
 
-      throw new AuthenticationError('You need to be logged in!');
-    },
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
 
   }
 };

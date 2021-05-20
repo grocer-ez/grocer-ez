@@ -17,12 +17,7 @@ const storeSchema = new Schema({
   username: {
     type: String,    
   },
-  lists: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'List'
-    }
-  ],
+  list: [{ item: String, quantity: Number}]
 });
 
 const Store = mongoose.model('Store', storeSchema);

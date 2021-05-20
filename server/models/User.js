@@ -3,6 +3,8 @@ const dateFormat = require('../utils/dateFormat');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
+const Store = require('./Store');
+
 
 const userSchema = new Schema({
   username: {
