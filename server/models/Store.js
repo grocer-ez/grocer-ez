@@ -34,7 +34,12 @@ const storeSchema = new Schema({
   username: {
     type: String,    
   },
-  lists: [listSchema]
+  lists: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'List'
+    }
+  ],
 });
 
 const Store = mongoose.model('Store', storeSchema);
