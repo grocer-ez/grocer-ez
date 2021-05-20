@@ -2,7 +2,7 @@ import { reducer } from '../utils/reducers';
 import {
   ADD_TO_LIST, 
   UPDATE_LIST, 
-  CLEAR_ITEM_FROM_LIST, 
+  CLEAR_LIST, 
   REMOVE_FROM_LIST,
   UPDATE_STORE, 
   REMOVE_STORE
