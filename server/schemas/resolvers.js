@@ -5,9 +5,22 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
+    me: async (parent, args, context) => {
+      if(context.user) {
+        const userData = await User.findOne({_id: context.user._id})
+        .select('-__v -password')
+        .populate('stores')
+        
+        
+        return userData
+      }
+      return new AuthenticationError('Not Loggerd In!');
+    },
+
     categories: async () => {
       return await Category.find();
     },
+    
     products: async (parent, { category, name }) => {
       const params = {};
 
