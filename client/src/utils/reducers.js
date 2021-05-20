@@ -1,50 +1,29 @@
 import { useReducer } from "react";
 import {
-  UPDATE_PRODUCTS,
-  ADD_TO_CART,
-  UPDATE_CART_QUANTITY,
-  REMOVE_FROM_CART,
-  ADD_MULTIPLE_TO_CART,
-  UPDATE_CATEGORIES,
-  UPDATE_CURRENT_CATEGORY,
-  CLEAR_CART,
-  TOGGLE_CART
+  ADD_TO_LIST, 
+  UPDATE_LIST, 
+  CLEAR_LIST, 
+  REMOVE_FROM_LIST,
+  UPDATE_STORE, 
+  REMOVE_STORE
 } from "./actions";
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case UPDATE_PRODUCTS:
+    case UPDATE_LIST:
       return {
         ...state,
-        products: [...action.products],
+        products: [...action.lists],
       };
 
-    case ADD_TO_CART:
+    case ADD_TO_LIST:
       return {
         ...state,
         cartOpen: true,
         cart: [...state.cart, action.product],
       };
 
-    case ADD_MULTIPLE_TO_CART:
-      return {
-        ...state,
-        cart: [...state.cart, ...action.products],
-      };
-
-    case UPDATE_CART_QUANTITY:
-      return {
-        ...state,
-        cartOpen: true,
-        cart: state.cart.map(product => {
-          if (action._id === product._id) {
-            product.purchaseQuantity = action.purchaseQuantity
-          }
-          return product
-        })
-      };
-
-    case REMOVE_FROM_CART:
+    case REMOVE_FROM_LIST:
       let newState = state.cart.filter(product => {
         return product._id !== action._id;
       });
@@ -55,26 +34,20 @@ export const reducer = (state, action) => {
         cart: newState
       };
 
-    case CLEAR_CART:
+    case CLEAR_LIST:
       return {
         ...state,
         cartOpen: false,
         cart: []
       };
 
-    case TOGGLE_CART:
-      return {
-        ...state,
-        cartOpen: !state.cartOpen
-      };
-
-    case UPDATE_CATEGORIES:
+    case UPDATE_STORE:
       return {
         ...state,
         categories: [...action.categories],
       };
 
-    case UPDATE_CURRENT_CATEGORY:
+    case REMOVE_STORE:
       return {
         ...state,
         currentCategory: action.currentCategory

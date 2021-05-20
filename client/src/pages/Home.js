@@ -1,10 +1,7 @@
 import React from "react";
-
 // import ProductList from "../components/ProductList";
-// import CategoryMenu from "../components/CategoryMenu";
-
-//create new list button that takes you to a model where you can make a new list
-
+// import CategoryMenu from "../components/Store";
+// import Cart from "../components/Cart";
 
 const Home = () => {
 
@@ -18,9 +15,9 @@ const Home = () => {
 
   return (
     <div className="container">
-
       {/* <CategoryMenu />
-      <ProductList /> */}
+      <ProductList />
+      <Cart /> */}
     </div>
   );
 };
