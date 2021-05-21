@@ -3,11 +3,11 @@ import StoreList from '../components/StoreList';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_STORES } from '../utils/queries';
+import { QUERY_STORES, QUERY_ME } from '../utils/queries';
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_STORES);
-  // const { data: userData } = useQuery(QUERY_ME);
+  const { data: userData } = useQuery(QUERY_ME);
   const stores = data?.stores || [];
 
   const loggedIn = Auth.loggedIn();
