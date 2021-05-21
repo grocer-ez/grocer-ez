@@ -20,11 +20,12 @@ const StoreList = ({ stores }) => {
               >
                 {stores.username}
               </Link>{' '}
-              thought on {stores.createdAt}
+               {stores.name}
             </p>
             <div className="card-body">
               <p>
-                lorem ipsum
+                {stores._id}
+                {/* insert store.list? here to display list item. Could just dispaly items 1-3 to make it mobile friendly? */}
               </p>
             </div>
           </div>

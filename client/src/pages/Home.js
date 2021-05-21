@@ -5,11 +5,11 @@ import StoreList from '../components/StoreList';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_ME } from '../utils/queries';
+import { QUERY_STORES, QUERY_ME } from '../utils/queries';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_ME);
-  // const { data: userData } = useQuery(QUERY_ME);
+  const { loading, data } = useQuery(QUERY_STORES);
+  const { data: userData } = useQuery(QUERY_ME);
   const stores = data?.stores || [];
 
   const loggedIn = Auth.loggedIn();
@@ -24,9 +24,13 @@ const Home = () => {
             <StoreList stores={stores} title="Your Stores here:" />
           )}
         </div>
+        {loggedIn && userData ? (
           <div className="col-12 col-lg-3 mb-3">
-            HOME PAGE
+            <StoreList
+              stores={userData.me.stores}
+            />
           </div>
+        ) : null}
         
       </div>
     </main>
