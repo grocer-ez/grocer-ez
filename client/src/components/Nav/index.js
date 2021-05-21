@@ -14,8 +14,8 @@ function Nav() {
             </Link>
           </li>
           <li className="mx-1">
-            <Link to="/allstores">
-              All Stores 
+            <Link to="/stores">
+              Dashboard
             </Link>
           </li>
           <li className="mx-1">
@@ -48,7 +48,6 @@ function Nav() {
     <header className="flex-row px-1">
       <h1>
         <Link to="/">
-          <span role="img" aria-label="shopping bag">🛍️</span>
           -Grocer-EZ
         </Link>
       </h1>
