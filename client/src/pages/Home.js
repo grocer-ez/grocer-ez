@@ -1,13 +1,11 @@
 import React from "react";
-import AllStores from "../components/AllStores";
+import Store from "../components/Store";
 
 const Home = () => {
 
   return (
     <div className="container">
-      {
-        <AllStores />
-      }
+      <Store />
     </div>
   );
 };
