@@ -20,6 +20,14 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
+
+    stores: async () => {
+      return await Store.find();
+    },
+
+    // store: async (parent, { _id }) => {
+    //   return await User.findById(_id).populate('store');
+    // },
     
     products: async (parent, { category, name }) => {
       const params = {};

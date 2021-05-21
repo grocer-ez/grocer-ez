@@ -1,12 +1,35 @@
-import React from "react";
-import Store from "../components/Store";
-// import Cart from "../components/Cart";
+import React from 'react';
+// import ThoughtList from '../components/ThoughtList';
+// import FriendList from '../components/FriendList';
+import StoreList from '../components/StoreList';
+
+import Auth from '../utils/auth';
+import { useQuery } from '@apollo/react-hooks';
+import { QUERY_ME } from '../utils/queries';
 
 const Home = () => {
+  const { loading, data } = useQuery(QUERY_ME);
+  // const { data: userData } = useQuery(QUERY_ME);
+  const stores = data?.stores || [];
+
+  const loggedIn = Auth.loggedIn();
+
   return (
-    <div className="container">
-      <Store />
-    </div>
+    <main>
+      <div className="flex-row justify-space-between">
+        <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <StoreList stores={stores} title="Your Stores here:" />
+          )}
+        </div>
+          <div className="col-12 col-lg-3 mb-3">
+            HOME PAGE
+          </div>
+        
+      </div>
+    </main>
   );
 };
 

@@ -15,27 +15,36 @@ export const QUERY_ALL_STORES = gql`
   }
 `;
 
-export const QUERY_STORE = gql`
-  {
-    store {
+export const QUERY_STORES = gql`
+{
+  stores(username: $username) {
       _id
       name
       username
       createdAt
-   }
+      list {
+        item
+        quantity
+    }
   }
+}
 `;    
 
-export const QUERY_USER = gql`
-  {
-    user{ 
-      username
-      stores{
+export const QUERY_ME = gql`
+{
+  me {
+    _id
+    username
+    stores{
+      _id
+      name
+      list{
         _id
-        name
-        createdAt
+        item 
+        quantity
       }
     }
   }
+}
 `;
 
