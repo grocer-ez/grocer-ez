@@ -18,6 +18,12 @@ body {
   min-height: 100%;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -134,7 +140,7 @@ input:focus {
   box-shadow: 0 0 .25rem rgba(0, 0, 0, .5);
 }
 
-.container {
+/* .container {
   width: 85%;
   max-width: 1200px;
   margin-left: auto;
@@ -150,9 +156,13 @@ input:focus {
   justify-content: space-between;
 }
 
+.space-around {
+  justify-content: space-around;
+}
+
 .flex-end {
   justify-content: flex-end;
-}
+} */
 
 .mx-1 {
   margin-right: var(--spacing-one);

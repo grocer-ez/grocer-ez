@@ -7,7 +7,7 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
+        <ul className="flex-row space around">
           <li className="mx-1">
             <Link to="/singleList">
               Single List 
@@ -48,7 +48,7 @@ function Nav() {
     <header className="flex-row px-1">
       <h1>
         <Link to="/">
-          -Grocer-EZ
+          Grocer-EZ
         </Link>
       </h1>
 
