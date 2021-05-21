@@ -17,7 +17,7 @@ function ThisList() {
       <>
         <div className="container my-1">
           <Link to="/home">
-            ← Back to Lists
+            ← Back to Stores
             </Link>
   
           {user ? (

@@ -1,69 +1,62 @@
-// import React, { useEffect } from "react";
-// import ProductItem from "../ProductItem";
-// import { useStoreContext } from "../../utils/GlobalState";
-// import { UPDATE_LIST } from "../../utils/actions";
-// import { useQuery } from '@apollo/react-hooks';
-// import { QUERY_LISTS } from "../../utils/queries";
-// import { idbPromise } from "../../utils/helpers";
-// import spinner from "../../assets/spinner.gif"
+import React, { useEffect } from "react";
+import { useStoreContext } from "../../utils/GlobalState";
+import { UPDATE_STORE } from "../../utils/actions";
+import { useQuery } from '@apollo/react-hooks';
+import { QUERY_ALL_STORES } from "../../utils/queries";
+import { idbPromise } from "../../utils/helpers";
 
-// function ProductList() {
-//   const [state, dispatch] = useStoreContext();
+function Store() {
+  const [state, dispatch] = useStoreContext();
 
-//   const { currentCategory } = state;
+  const { currentCategory } = state;
 
-//   const { loading, data } = useQuery(QUERY_LISTS);
+  const { loading, data } = useQuery(QUERY_ALL_STORES);
 
-//   useEffect(() => {
-//     if(data) {
-//       dispatch({
-//            type: UPDATE_LIST,
-//           products: data.products
-//         });
-//         data.products.forEach((product) => {
-//           idbPromise('products', 'put', product);
-//         });
-//     } else if (!loading) {
-//       idbPromise('products', 'get').then((products) => {
-//         dispatch({
-//           type: UPDATE_LIST,
-//          products: products
-//        });
-//       });
-//     }
-//   }, [data, loading, dispatch]);
+  useEffect(() => {
+    if(data) {
+      dispatch({
+           type: UPDATE_STORE,
+          stores: data.stores
+        });
+        data.products.forEach((store) => {
+          idbPromise('stores', 'put', store);
+        });
+    } else if (!loading) {
+      idbPromise('stores', 'get').then((stores) => {
+        dispatch({
+          type: UPDATE_STORE,
+         stores: stores
+       });
+      });
+    }
+  }, [data, loading, dispatch]);
 
-//   function filterProducts() {
-//     if (!currentCategory) {
-//       return state.products;
-//     }
+  function filterStores() {
+    if (!currentCategory) {
+      return state.stores;
+    }
 
-//     return state.products.filter(product => product.category._id === currentCategory);
-//   }
+    return state.store.filter(store => store.category._id === currentCategory);
+  }
 
-//   return (
-//     <div className="my-2">
-//       <h2>Our Products:</h2>
-//       {state.products.length ? (
-//         <div className="flex-row">
-//             {filterProducts().map(product => (
-//                 <ProductItem
-//                   key= {product._id}
-//                   _id={product._id}
-//                   image={product.image}
-//                   name={product.name}
-//                   price={product.price}
-//                   quantity={product.quantity}
-//                 />
-//             ))}
-//         </div>
-//       ) : (
-//         <h3>You haven't added any products yet!</h3>
-//       )}
-//       { loading ? 
-//       <img src={spinner} alt="loading" />: null}
-//     </div>
-//   );
-// }
+  return (
+    <div className="my-2" >
+      <h2>Your Stores:</h2>
+      {state.stores.length ? (
+        <div className="flex-row">
+            {filterStores().map(store => (
+                <Store
+                  key= {store._id}
+                  _id={store._id}
+                  name={store.name}
+                />
+            ))}
+        </div>
+      ) : (
+        <h3>You haven't added any stores yet!</h3>
+      )}
+    </div>
+  );
+}
 
-// export default ProductList;
+export default Store;
