@@ -14,8 +14,8 @@ function Nav() {
             </Link>
           </li>
           <li className="mx-1">
-            <Link to="/allstores">
-              All Stores 
+            <Link to="/store">
+              Stores
             </Link>
           </li>
           <li className="mx-1">
