@@ -5,7 +5,8 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_USER } from "../utils/queries";
 // import listSchema from "../../../server/models/List";
 
-function ThisList() {
+function ThisList(props) {
+    console.log(props.location)
     const { data } = useQuery(QUERY_USER);
     let user;
   

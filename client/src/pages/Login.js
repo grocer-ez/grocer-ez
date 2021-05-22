@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useMutation } from '@apollo/react-hooks';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { LOGIN } from "../utils/mutations"
 import Auth from "../utils/auth";
 
 function Login(props) {
+  let history = useHistory();
   const [formState, setFormState] = useState({ email: '', password: '' })
   const [login, { error }] = useMutation(LOGIN);
 
@@ -14,6 +15,7 @@ function Login(props) {
       const mutationResponse = await login({ variables: { email: formState.email, password: formState.password } })
       const token = mutationResponse.data.login.token;
       Auth.login(token);
+      history.push("/Home");
     } catch (e) {
       console.log(e)
     }
