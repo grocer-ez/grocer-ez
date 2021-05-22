@@ -24,7 +24,7 @@ const StoreList = ({ stores }) => {
             </p>
             <div className="card-body">
               <p>
-                
+
                 {/* insert store.list? here to display list item. Could just dispaly items 1-3 to make it mobile friendly? */}
               </p>
             </div>
