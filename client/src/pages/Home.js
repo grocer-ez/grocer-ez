@@ -24,6 +24,9 @@ const Home = () => {
             <StoreList stores={stores} title="Your Stores here:" />
           )}
         </div>
+        <div className="card-header">
+        <h3>Your Stores:</h3>
+        </div>
         {loggedIn && userData ? (
           <div className="col-12 col-lg-3 mb-3">
             <StoreList
@@ -33,6 +36,7 @@ const Home = () => {
         ) : null}
         
       </div>
+      <button>Add a Store</button>
       </div>
     </main>
   );

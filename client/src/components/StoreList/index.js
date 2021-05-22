@@ -3,15 +3,12 @@ import { Link } from 'react-router-dom';
 
 
 const StoreList = ({ stores }) => {
-  if (stores.length == 0) {
+  if (!stores.length === 0) {
     console.log(stores)
     return <h3>No Stores Yet</h3>;
-  }
-else {
+  } else {
   return (
     <div>
-      <button>Add a Store</button>
-      <h3>Your Stores:</h3>
       {stores &&
         stores.map(stores => (
           <div key={stores._id} className="card mb-3">

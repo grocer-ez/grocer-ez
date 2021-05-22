@@ -16,7 +16,7 @@ export const QUERY_ALL_STORES = gql`
 `;
 
 export const QUERY_STORES = gql`
-{
+query stores($username: String) {
   stores(username: $username) {
       _id
       name
