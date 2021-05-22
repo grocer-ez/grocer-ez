@@ -220,7 +220,7 @@ input:focus {
 }
 
 .card {
-  width: 50%;
+  width: 100%;
   text-align: center;
   border-color: var(--primary);
   color: var(--light);
