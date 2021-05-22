@@ -8,19 +8,18 @@ const StoreList = ({ stores }) => {
   }
   return (
     <div>
+
       {stores &&
         stores.map(stores => (
           <div key={stores._id} className="card mb-3">
             <p className="card-header">
               <Link
-              // should the link be to stores.name?
-                to={`/singlelist/${stores.username}`}
+                to={`/singlelist/${stores.name}`}
                 style={{ fontWeight: 700 }}
-                className="text-light"
+                className="text-dark"
               >
-                {stores.username}
+                {stores.name}
               </Link>{' '}
-               {stores.name}
             </p>
             <div className="card-body">
               <p>

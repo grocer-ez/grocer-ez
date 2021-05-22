@@ -16,7 +16,6 @@ const Home = () => {
     <main>
       <div className="flex-row justify-space-between">
         <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
-        <div style={{ backgroundImage: "url(../assets/homepage.jpg)" }}>
 
           {loading ? (
             <div>Loading...</div>
@@ -26,9 +25,7 @@ const Home = () => {
         </div>
         {loggedIn && userData ? (
           <div className="col-12 col-lg-3 mb-3">
-            <br></br>
-            <h2>Your Stores:</h2>
-            <br></br>
+            <h3 className="card-header text-align">Your Stores:</h3>
             <StoreList
               stores={userData.me.stores}
             />
@@ -38,7 +35,6 @@ const Home = () => {
           
         ) : null}
         
-      </div>
       </div>
     </main>
   );
