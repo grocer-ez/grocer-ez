@@ -14,7 +14,7 @@ function Nav() {
             </Link>
           </li>
           <li className="col align-self-center justify-content-around mx-1">
-            <Link to="/store">
+            <Link to="/home">
               Stores
             </Link>
           </li>

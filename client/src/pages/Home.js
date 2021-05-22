@@ -14,9 +14,10 @@ const Home = () => {
 
   return (
     <main>
-      <div style={{ backgroundImage: "url(../assets/homepage.jpg)" }}>
       <div className="flex-row justify-space-between">
         <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
+        <div style={{ backgroundImage: "url(../assets/homepage.jpg)" }}>
+
           {loading ? (
             <div>Loading...</div>
           ) : (

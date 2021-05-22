@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const StoreList = ({ stores }) => {
-  // if (!stores.length) {
-  //   return <h3>No Stores Yet</h3>;
-  // }
 
+const StoreList = ({ stores }) => {
+  if (stores.length == 0) {
+    console.log(stores)
+    return <h3>No Stores Yet</h3>;
+  }
+else {
   return (
     <div>
       <button>Add a Store</button>
@@ -26,13 +28,6 @@ const StoreList = ({ stores }) => {
             </p>
             <div className="card-body">
               <p>
-
-                {/* i feel like these buttons belong on the 
-                single list page. it makes it cluttered in mobile.
-
-                 <button>Add to List</button>
-                <button>Remove from list</button> */}
-                <br></br>
                 {stores._id}
                 {/* insert store.list? here to display list item. Could just dispaly items 1-3 to make it mobile friendly? */}
               </p>
@@ -41,6 +36,7 @@ const StoreList = ({ stores }) => {
         ))}
     </div>
   );
+}
 };
 
 export default StoreList;
