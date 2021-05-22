@@ -21,15 +21,21 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <StoreList stores={stores} title="Your Stores here:" />
+            <StoreList stores={stores} title="Your Stores:" />
           )}
         </div>
         {loggedIn && userData ? (
           <div className="col-12 col-lg-3 mb-3">
+            <br></br>
+            <h2>Your Stores:</h2>
+            <br></br>
             <StoreList
               stores={userData.me.stores}
             />
+           <button>Add a Store</button>
+
           </div>
+          
         ) : null}
         
       </div>
