@@ -95,7 +95,7 @@ a {
 
 a:hover {
   color: var(--primary);
-  text-shadow: darkred;
+  text-shadow: 1px 1px darkred;
 }
 
 
