@@ -1,6 +1,5 @@
 import React from 'react';
 import StoreList from '../components/StoreList';
-
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_STORES, QUERY_ME } from '../utils/queries';
@@ -16,7 +15,6 @@ const Home = () => {
     <main>
       <div className="flex-row justify-space-between">
         <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
-        <div style={{ backgroundImage: "url(../assets/homepage.jpg)" }}>
 
           {loading ? (
             <div>Loading...</div>
@@ -38,7 +36,6 @@ const Home = () => {
           
         ) : null}
         
-      </div>
       </div>
     </main>
   );

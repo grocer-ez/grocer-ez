@@ -32,12 +32,12 @@ function Signup(props) {
   };
 
   return (
-    <div className="container my-1 ">
+    <div className="container my-1">
       {/* <Link to="/login">
         ← Go to Login
       </Link> */}
       <h2>Signup</h2>
-      <div class="d-flex justify-content-center">
+      <div class="d-flex container justify-content-center position-absolute top-50 start-50 translate-middle mobile">
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <label htmlFor="username">Username:</label>

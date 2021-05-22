@@ -36,7 +36,7 @@ function App() {
               <Route exact path="/home" component={Home} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/success" component={Success} />
-              {/* <Route exact path="/singleList" component={SingleList} /> */}
+              {/* <Route exact path="/singleList/:id" component={SingleList} /> */}
               <Route component={NoMatch} />
             </Switch>
           </StoreProvider>
