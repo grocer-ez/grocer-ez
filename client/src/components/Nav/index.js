@@ -47,11 +47,11 @@ function Nav() {
   return (
     <header className="container-fluid">
       <div className="row">
-      <h1 className="col justify-content-center">
+      <p className="col justify-content-center">
         <Link to="/">
           Grocer-EZ
         </Link>
-      </h1>
+      </p>
       </div>
       <nav>
         {showNavigation()}
