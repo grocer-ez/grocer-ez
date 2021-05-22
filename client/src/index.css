@@ -1,10 +1,10 @@
 :root {
-  --primary: #232F3E;
-  --secondary: #F3A847;
+  --primary: #0ca14a;
+  --secondary: #90eb66d5;
   --tertiary: #B12704;
-  --light: #fafafa;
-  --dark: #272f32;
-  --error: rgb(228, 46, 1);
+  --light: #cfe3fa;
+  --dark: #050136;
+  --error: rgb(228, 1, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
 }
@@ -16,6 +16,12 @@
 html,
 body {
   min-height: 100%;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -36,7 +42,7 @@ h5,
 h6 {
   font-family: 'Rubik', sans-serif;
   font-weight: 500;
-  margin: 5px 0;
+  /* margin: 5px 0; */
   line-height: 1.25;
 }
 
@@ -134,7 +140,7 @@ input:focus {
   box-shadow: 0 0 .25rem rgba(0, 0, 0, .5);
 }
 
-.container {
+/* .container {
   width: 85%;
   max-width: 1200px;
   margin-left: auto;
@@ -150,9 +156,13 @@ input:focus {
   justify-content: space-between;
 }
 
+.space-around {
+  justify-content: space-around;
+}
+
 .flex-end {
   justify-content: flex-end;
-}
+} */
 
 .mx-1 {
   margin-right: var(--spacing-one);

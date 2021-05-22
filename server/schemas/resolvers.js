@@ -1,13 +1,34 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, List, Store, Order } = require('../models');
+const { User, Store, Order } = require('../models');
 const { populate } = require('../models/Store');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
+    me: async (parent, args, context) => {
+      if(context.user) {
+        const userData = await User.findOne({_id: context.user._id})
+        .select('-__v -password')
+        .populate('stores')
+        
+        
+        return userData
+      }
+      return new AuthenticationError('Not Loggerd In!');
+    },
+
     categories: async () => {
       return await Category.find();
     },
+
+    stores: async () => {
+      return await Store.find();
+    },
+
+    // store: async (parent, { _id }) => {
+    //   return await User.findById(_id).populate('store');
+    // },
+    
     products: async (parent, { category, name }) => {
       const params = {};
 
@@ -19,7 +40,7 @@ const resolvers = {
         params.name = {
           $regex: name
         };
-      }
+      }f
 
       return await Product.find(params).populate('category');
     },
@@ -119,22 +140,21 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addList: async (parent, { storeId, item, quantity }, context) => {
-      if (context.user) {
-        const updatedList = await Store.findOneAndUpdate(
-          { _id: storeId },
-          { $push: { lists: { item, quantity, username: context.user._id } } },
-          { new: true, runValidators: true }
-        );
+    // addList: async (parent, { storeId, item, quantity }, context) => {
+    //   if (context.user) {
+    //     const updatedList = await Store.findOneAndUpdate(
+    //       { _id: storeId },
+    //       { $push: { lists: { item, quantity, username: context.user._id } } },
+    //       { new: true, runValidators: true }
+    //     );
 
-        return updatedList;
-      }
+    //     return updatedList;
+    //   }
 
-      throw new AuthenticationError('You need to be logged in!');
-    },
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
 
   }
 };
 
 module.exports = resolvers;
-
