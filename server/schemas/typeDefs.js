@@ -19,6 +19,11 @@ const typeDefs = gql`
     quantity: Int
   }
 
+  input ListInput {
+    item: String
+    quantity: Int
+  }
+
   type Product {
     _id: ID
     name: String
@@ -70,8 +75,8 @@ const typeDefs = gql`
     updateUser(username: String, email: String, password: String): User
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
-    addStore(name: String!): Store
-    addList(storeId: ID!, item: String!, quantity: Int!): Store
+    addStore(name: String!, list:ListInput): Store
+    addList(storeId: ID!, list:ListInput): Store
   }
 `;
 
