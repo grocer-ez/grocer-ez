@@ -224,7 +224,7 @@ input:focus {
   text-align: center;
   border-color: var(--primary);
   color: var(--light);
-  background-color: var(--dark);
+  background-color: rgb(41, 41, 41);
   box-shadow: 1px 0px 5px var(--primary);
 }
 
