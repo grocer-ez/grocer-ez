@@ -1,5 +1,6 @@
 import React from 'react';
 import StoreList from '../components/StoreList';
+import AddStore from '../components/AddStore';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
@@ -16,7 +17,6 @@ const Home = () => {
     <main>
       <div className="flex-row justify-space-between">
         <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
-
           {loading ? (
             <div>Loading...</div>
           ) : (
@@ -29,7 +29,8 @@ const Home = () => {
             <StoreList
               stores={userData.me.stores}
             />
-           <button>Add a Store</button>
+
+           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onClick={AddStore}>Add a Store</button>
 
           </div>
           

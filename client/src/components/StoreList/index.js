@@ -11,6 +11,9 @@ const StoreList = ({ stores }) => {
 
       {stores &&
         stores.map(stores => (
+          <div className ="container">
+            <div className="row">
+              <div className="col justify-content-center">
           <div key={stores._id} className="card mb-3">
             <p className="card-header">
               <Link
@@ -28,6 +31,9 @@ const StoreList = ({ stores }) => {
               </p>
             </div>
           </div>
+          </div>
+           </div>
+           </div>
         ))}
     </div>
   );
