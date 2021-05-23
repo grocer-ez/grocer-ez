@@ -9,11 +9,6 @@ function Nav() {
       return (
         <ul className="row">
           <li className="col align-self-center justify-content-around mx-1 center">
-            <Link to="/singleList">
-              Single List 
-            </Link>
-          </li>
-          <li className="col align-self-center justify-content-around mx-1 center">
             <Link to="/home">
               Stores
             </Link>
