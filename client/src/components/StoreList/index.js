@@ -29,12 +29,20 @@ const StoreList = ({ stores }) => {
                 {/* insert store.list? here to display list item. Could just dispaly items 1-3 to make it mobile friendly? */}
               </p>
               <div>
-                {
-                  stores.list ? stores.list.map((element)=>{
-                    return <p>{element.item}</p>
-                  })
-                  : <p>nothin here</p>
-                }
+              {stores.list ? 
+                  //array.map() returns an array of stuff.
+                  stores.list.map((element, index)=>{
+                    return index % 2 ?
+                    <div style={{backgroundColor: "grey"}}>
+                      <h3>{element.item}</h3>
+                      <p>Quantity: {element.quantity}</p>
+                    </div> : 
+                    <div style={{backgroundColor: "white"}}>
+                      <h3>{element.item}</h3>
+                      <p>Quantity: {element.quantity}</p>
+                    </div>
+                  }) 
+                : <p>No lists found.</p>}
               </div>
             </div>
           </div>
