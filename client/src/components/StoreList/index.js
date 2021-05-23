@@ -3,6 +3,19 @@ import { Link } from 'react-router-dom';
 
 
 const StoreList = ({ stores }) => {
+  const addItem = () => {
+    
+  }
+
+  const deleteItem = () => {
+    
+  }
+
+  const deleteList = () => {
+    
+  }
+
+
   if (!stores.length === 0) {
     return <h3>No Stores Yet</h3>;
   }
@@ -32,10 +45,17 @@ const StoreList = ({ stores }) => {
       <div>
       <h3>{element.item}</h3>
       <p>Quantity: {element.quantity}</p>
+      <button type="button" class="btn btn-primary" onClick={addItem}>Add Item</button>
+      <button type="button" class="btn btn-primary"onClick={deleteItem}>Delete Item</button>
+      <button type="button" class="btn btn-primary"onClick={deleteList}>Delete List</button>
       </div> :
       <div>
          <h3>{element.item}</h3>
       <p>Quantity: {element.quantity}</p>
+      <button type="button" class="btn btn-primary" onClick={addItem}>Add Item</button>
+      <button type="button" class="btn btn-primary"onClick={deleteItem}>Delete Item</button>
+      <button type="button" class="btn btn-primary"onClick={deleteList}>Delete List</button>
+
         </div>
     })
     : <p>Please add items</p>
