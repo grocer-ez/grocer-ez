@@ -17,7 +17,11 @@ const typeDefs = gql`
     item: String
     quantity: Int
   }
-  type Product {
+  input ListInput {
+    item: String
+    quantity: Int
+  }
+  type Product  {
     _id: ID
     name: String
     description: String
@@ -25,7 +29,7 @@ const typeDefs = gql`
     quantity: Int
     price: Float
     category: Category
-  }
+  } 
   type Order {
     _id: ID
     purchaseDate: String
@@ -38,31 +42,25 @@ const typeDefs = gql`
     createdAt: String
     stores: [Store]
   }
-  type Checkout {
-    session: ID
-  }
   type Auth {
     token: ID
     user: User
   }
-  type Query {
-    categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
-    user: User
-    order(_id: ID!): Order
-    checkout(products: [ID]!): Checkout
-    stores: [Store]
+  type Query {    
+    user: User    
+    stores(username: String): [Store]
     me: User
+    store(_id:ID!): Store
   }
+
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
-    addOrder(products: [ID]!): Order
-    updateUser(username: String, email: String, password: String): User
-    updateProduct(_id: ID!, quantity: Int!): Product
+    addUser(username: String!, email: String!, password: String!): Auth    
+    updateUser(username: String, email: String, password: String): User    
     login(email: String!, password: String!): Auth
     addStore(name: String!): Store
-    addList(storeId: ID!, item: String!, quantity: Int!): Store
+    updateList(_id: ID!, list:ListInput): Store
+    addList(_id: ID!, item:String!, quantity: Int!): Store
+    updateStore( _id: ID!, name: String!): Store      
   }
 `;
 

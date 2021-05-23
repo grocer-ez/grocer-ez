@@ -26,7 +26,7 @@ mutation addList($storeId: ID!, $item: String!, $quantity: Int!) {
     
   }
 }
-`
+`;
 export const ADD_STORE = gql`
 mutation addStore($name: String!) {
   addStore(name: $name) {
@@ -36,25 +36,6 @@ mutation addStore($name: String!) {
     username    
   }
 }
-`
-
-
-export const ADD_ORDER = gql`
-  mutation addOrder($products: [ID]!) {
-    addOrder(products: $products) {
-      purchaseDate
-      products {
-        _id
-      name
-      description
-      price
-      quantity
-      category {
-        name
-      } 
-      }
-    }
-  }
 `;
 
 
