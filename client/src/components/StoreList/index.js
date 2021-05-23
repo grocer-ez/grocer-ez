@@ -24,16 +24,16 @@ const StoreList = ({ stores }) => {
             </p>
             <div className="card-body row">
 
-            <div>
+            <div >
               {stores.list ? 
                   //array.map() returns an array of stuff.
                   stores.list.map((element, index)=>{
                     return index % 2 ?
-                    <div style={{ backgroundColor: "grey", color: "black"}}>
+                    <div key={stores.id} style={{ backgroundColor: "grey", color: "black"}}>
                       <h3>{element.item}</h3>
                       <p>Quantity: {element.quantity}</p>
                     </div> : 
-                    <div style={{ backgroundColor: "white", color: "black"}}>
+                    <div key={stores.id} style={{ backgroundColor: "white", color: "black"}}>
                       <h3>{element.item}</h3>
                       <p>Quantity: {element.quantity}</p>
                     </div>

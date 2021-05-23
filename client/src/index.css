@@ -11,10 +11,10 @@
   box-sizing: border-box;
 }
 
-html,
+/* html,
 body {
-  min-height: 100%;
-}
+  max-height: 75%;
+} */
 
 ul {
   list-style-type: none;
@@ -227,7 +227,7 @@ input:focus {
 
 .card {
   width: 100%;
-  height: inherit;
+  /* height: inherit; */
   text-align: center;
   border-color: var(--primary);
   color: var(--light);
