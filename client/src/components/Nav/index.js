@@ -8,11 +8,11 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <ul className="row center">
-          <li className="col align-self-center justify-content-around mx-1 center">
+          {/* <li className="col align-self-center justify-content-around mx-1 center">
             <Link to="/singleList">
               Single List 
             </Link>
-          </li>
+          </li> */}
           <li className="col align-self-center justify-content-around mx-1 center">
             <Link to="/home">
               Stores

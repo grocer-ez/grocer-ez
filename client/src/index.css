@@ -32,7 +32,9 @@ body {
   color: var(--light);
   background-color: var(--dark);
   text-shadow: 1px 1px var(--primary);
-
+  background-image: url("../src/assets/homepage.jpg");
+  background-position: center;
+  background-size: 100%;
 }
 
 .border {
@@ -224,8 +226,8 @@ input:focus {
   background-color: rgb(41, 41, 41);}
 
 .card {
-  width: 50%;
-  height: 10rem;
+  width: 100%;
+  height: inherit;
   text-align: center;
   border-color: var(--primary);
   color: var(--light);
@@ -243,6 +245,7 @@ input:focus {
   box-shadow: 1px 0px 5px var(--primary);
   padding: 20px;
   width: 50%;
+  /* height: 50%; */
 }
 
 .error-text {
