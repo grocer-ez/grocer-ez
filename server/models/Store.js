@@ -17,7 +17,7 @@ const storeSchema = new Schema({
   username: {
     type: String,    
   },
-  list: [{ item: String, quantity: Number}]
+  list: [{item: String, quantity: Number}]
 });
 
 const Store = mongoose.model('Store', storeSchema);
