@@ -16,7 +16,8 @@
   "dependencies": {
     "bootstrap": "^5.0.1",
     "if-env": "^1.0.4",
-    "react-bootstrap": "^1.6.0"
+    "react-bootstrap": "^1.6.0",
+    "react-native": "^0.64.1"
   },
   "devDependencies": {
     "concurrently": "^5.1.0"

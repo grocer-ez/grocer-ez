@@ -1,6 +1,7 @@
 import React from 'react';
 import StoreList from '../components/StoreList';
 import AddStore from '../components/AddStore';
+// import background from '../assets/darkHomepage';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
@@ -14,6 +15,7 @@ const Home = () => {
   const loggedIn = Auth.loggedIn();
 
   return (
+    // style={{ backgroundImage: `url(${background})`}}
     <main>
       <div className="flex-row justify-space-between">
         <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
