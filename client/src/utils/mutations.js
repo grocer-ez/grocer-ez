@@ -16,10 +16,12 @@ mutation addList($storeId: ID!, $item: String!, $quantity: Int!) {
   addList(storeId: $storeId, item: $item, quantity: $quantity) {
     _id
     name
-    list {
+    username
+    lists {
       _id
       item
       quantity
+      username
     }
     
   }

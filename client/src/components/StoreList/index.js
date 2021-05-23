@@ -2,9 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-
 const StoreList = ({ stores }) => {
-if (!stores.length === 0) {
+  if (!stores.length === 0) {
     console.log(stores)
     return <h3>No Stores Yet</h3>;
   } else {
@@ -27,7 +26,7 @@ if (!stores.length === 0) {
             <div className="card-body">
               <p>
                 {stores._id}
-                {/* <StoreList stores={store.list} title="Your Stores here:" /> */}
+                {/* insert store.list? here to display list item. Could just dispaly items 1-3 to make it mobile friendly? */}
               </p>
             </div>
           </div>

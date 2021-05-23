@@ -3,10 +3,10 @@ import StoreList from '../components/StoreList';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_ALL_STORES, QUERY_ME } from '../utils/queries';
+import { QUERY_STORES, QUERY_ME } from '../utils/queries';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_ALL_STORES);
+  const { loading, data } = useQuery(QUERY_STORES);
   const { data: userData } = useQuery(QUERY_ME);
   const stores = data?.stores || [];
 
@@ -18,11 +18,11 @@ const Home = () => {
         <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
         <div style={{ backgroundImage: "url(../assets/homepage.jpg)" }}>
 
-          {/* {loading ? (
+          {loading ? (
             <div>Loading...</div>
           ) : (
             <StoreList stores={stores} title="Your Stores here:" />
-          )} */}
+          )}
         </div>
         <div className="card-header">
         <h3>Your Stores:</h3>
