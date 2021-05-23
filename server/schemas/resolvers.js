@@ -83,7 +83,7 @@ const resolvers = {
 
     updateList: async (parent, {_id, item, quantity }, context) => {
       if (context.user) {
-        return await Store.findByIdAndUpdate( _id, {list: item}, {new: true})        
+        return await Store.list.item.findByIdAndUpdate( _id, {list: item, quantity: quantity}, {new: true})        
        }
       throw new AuthenticationError('Not logged in');
     },

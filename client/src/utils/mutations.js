@@ -28,12 +28,12 @@ mutation addList($storeId: ID!, $item: String!, $quantity: Int!) {
 }
 `;
 export const ADD_STORE = gql`
-mutation addStore($name: String!) {
-  addStore(name: $name) {
+mutation addStore($_id: ID!, $name: String!) {
+  addStore(_id: $_id, name: $name) {
     _id
     name
     createdAt
-    username    
+    username
   }
 }
 `;
