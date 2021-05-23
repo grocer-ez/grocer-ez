@@ -14,7 +14,7 @@ const resolvers = {
         
         return userData
       }
-      return new AuthenticationError('Not Loggerd In!');
+      return new AuthenticationError('Not Logged In!');
     },
 
     categories: async () => {
@@ -25,8 +25,8 @@ const resolvers = {
       return await Store.find();
     },
 
-    // store: async (parent, { _id }) => {
-    //   return await User.findById(_id).populate('store');
+    // list: async (parent, { _id }) => {
+    //   return await Store.findById(_id).populate('list');
     // },
     
     products: async (parent, { category, name }) => {
