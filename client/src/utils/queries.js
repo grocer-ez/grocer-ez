@@ -1,34 +1,5 @@
 import gql from 'graphql-tag';
 
-export const QUERY_ALL_STORES = gql`
-  {
-    store {
-      _id
-      name
-      username
-      createdAt
-      list {
-        item
-        quantity
-      }
-    }
-  }
-`;
-
-export const QUERY_STORES = gql`
-{
-  stores(username: $username) {
-      _id
-      name
-      username
-      createdAt
-      list {
-        item
-        quantity
-    }
-  }
-}
-`;    
 
 export const QUERY_ME = gql`
 {
@@ -43,6 +14,20 @@ export const QUERY_ME = gql`
         item 
         quantity
       }
+    }
+  }
+}
+`;
+
+export const QUERY_STORE = gql`
+query store($_id: ID!){
+  store(_id:$_id){
+    _id
+    name
+    list{
+      _id
+      item
+      quantity
     }
   }
 }
