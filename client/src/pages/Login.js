@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useMutation } from '@apollo/react-hooks';
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { LOGIN } from "../utils/mutations"
 import Auth from "../utils/auth";
 
-function Login(props) {
+function Login() {
   let history = useHistory();
   const [formState, setFormState] = useState({ email: '', password: '' })
   const [login, { error }] = useMutation(LOGIN);
@@ -36,7 +36,7 @@ function Login(props) {
       </Link> */}
 
       <h2>Login</h2>
-      <div className="d-flex container justify-content-center position-absolute top-50 start-50 translate-middle mobile">
+      <div className="d-flex container justify-content-center position-absolute top-50 start-50 translate-middle mobile grey">
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <label htmlFor="email">Email address:</label>

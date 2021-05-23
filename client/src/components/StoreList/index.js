@@ -22,11 +22,32 @@ const StoreList = ({ stores }) => {
                 {stores.name}
               </Link>{' '}
             </p>
-            <div className="card-body">
-              <p>
+            <div className="card-body row">
 
+                <dl className="list">
+                  <dd>
+                    item1
+                  </dd>
+                  <dd>
+                    item1
+                  </dd>
+                  <dd>
+                    item1
+                  </dd>
+                  <dd>
+                    item1
+                  </dd>
+                  <dd>
+                    item1
+                  </dd>
+                  <dd>
+                    item1
+                  </dd>
+                  <dd>
+                    item1
+                  </dd>
+                </dl>
                 {/* insert store.list? here to display list item. Could just dispaly items 1-3 to make it mobile friendly? */}
-              </p>
             </div>
           </div>
         ))}
