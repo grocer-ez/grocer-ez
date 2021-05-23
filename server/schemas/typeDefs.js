@@ -1,42 +1,27 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-  type Category {
-    _id: ID
-    name: String
-  }
   type Store {
     _id: ID
     name: String
     username: String
     createdAt: String
-    lists: [List]
-  }
-
-  type Product {
-    _id: ID
-    name: String
-    description: String
-    image: String
-    quantity: Int
-    price: Float
-    category: Category
+    list: [List]         
   }
   type List{
     _id: ID
     item: String
     quantity: Int
-    username: String
-    createdAt: String    
-    store: [Store]
   }
-
+  input ListInput {
+    item: String
+    quantity: Int
+  }
+  
   type Order {
     _id: ID
     purchaseDate: String
-    products: [Product]
   }
-
   type User {
     _id: ID
     username: String
@@ -44,35 +29,25 @@ const typeDefs = gql`
     createdAt: String
     stores: [Store]
   }
-
-  type Checkout {
-    session: ID
-  }
-
   type Auth {
     token: ID
     user: User
   }
-
-  type Query {
-    categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
-    user: User
-    order(_id: ID!): Order
-    checkout(products: [ID]!): Checkout
+  type Query {    
+    user: User    
     stores(username: String): [Store]
     me: User
+    store(_id:ID!): Store
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
-    addOrder(products: [ID]!): Order
-    updateUser(username: String, email: String, password: String): User
-    updateProduct(_id: ID!, quantity: Int!): Product
+    addUser(username: String!, email: String!, password: String!): Auth    
+    updateUser(username: String, email: String, password: String): User    
     login(email: String!, password: String!): Auth
     addStore(name: String!): Store
-    addList(storeId: ID!, item: String!, quantity: Int!): Store
+    updateList(_id: ID!, list:ListInput): Store
+    addList(_id: ID!, item:String!, quantity: Int!): Store
+    updateStore( _id: ID!, name: String!): Store      
   }
 `;
 

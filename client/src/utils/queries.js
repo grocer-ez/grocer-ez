@@ -1,94 +1,35 @@
 import gql from 'graphql-tag';
 
-export const QUERY_PRODUCTS = gql`
-  query getProducts($category: ID) {
-    products(category: $category) {
-      _id
-      name
-      description
-      price
-      quantity
-      image
-      category {
-        _id
-      }
-    }
-  }
-`;
 
-export const QUERY_CHECKOUT = gql`
-  query getCheckout($products: [ID]!) {
-    checkout(products: $products) {
-      session
-    }
-  }
-`;
-
-export const QUERY_ALL_PRODUCTS = gql`
-  {
-    products {
-      _id
-      name
-      description
-      price
-      quantity
-      category {
-        name
-      }
-    }
-  }
-`;
-
-export const QUERY_CATEGORIES = gql`
+export const QUERY_ME = gql`
 {
-  categories {
+  me {
     _id
-    name
+    username
+    stores{
+      _id
+      name
+      list{
+        _id
+        item 
+        quantity
+      }
+    }
   }
 }
 `;
 
-// export const QUERY_USER = gql`
-// {
-//   user {
-//     firstName
-//     lastName
-//     orders {
-//       _id
-//       purchaseDate
-//       products {
-//         _id
-//         name
-//         description
-//         price
-//         quantity
-//         image
-//       }
-//     }
-//   }
-// }
-// `;
-
-export const QUERY_USER = gql `
-  {
-    user{ 
-      username
-      stores{
-        _id
-        lists{
-          _id
-        }
-      }
+export const QUERY_STORE = gql`
+query store($_id: ID!){
+  store(_id:$_id){
+    _id
+    name
+    list{
+      _id
+      item
+      quantity
     }
   }
+}
 `;
 
-// export const QUERY_LIST = gql`
-
-// `;
-
-// export const QUERY_STORE = gql`
-
-// `;
-
-// export const QUERY_HISTORY = gql ``;
