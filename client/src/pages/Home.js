@@ -1,7 +1,7 @@
 import React from 'react';
 import StoreList from '../components/StoreList';
 import AddStore from '../components/AddStore';
-// import background from '../assets/darkHomepage';
+// import background from './assets/darkHomepage';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';

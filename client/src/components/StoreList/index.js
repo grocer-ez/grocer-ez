@@ -25,11 +25,15 @@ const StoreList = ({ stores }) => {
               </Link>{' '}
             </p>
             <div className="card-body">
-              <p>
-                {stores._id}
-                {/* insert store.list? here to display list item. Could just dispaly items 1-3 to make it mobile friendly? */}
-              </p>
-            </div>
+<div>
+  {
+    stores.list ? stores.list.map((element)=>{
+      return <p>{element.item}</p>
+    })
+    : <p>Please add items</p>
+  }
+  </div>
+              </div>
           </div>
           </div>
            </div>
