@@ -27,8 +27,16 @@ const StoreList = ({ stores }) => {
             <div className="card-body">
 <div>
   {
-    stores.list ? stores.list.map((element)=>{
-      return <p>{element.item}</p>
+    stores.list ? stores.list.map((element, index)=>{
+      return index % 2 ?
+      <div>
+      <h3>{element.item}</h3>
+      <p>Quantity: {element.quantity}</p>
+      </div> :
+      <div>
+         <h3>{element.item}</h3>
+      <p>Quantity: {element.quantity}</p>
+        </div>
     })
     : <p>Please add items</p>
   }
