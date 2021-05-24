@@ -7,7 +7,12 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="row">
+        <ul className="row center">
+          {/* <li className="col align-self-center justify-content-around mx-1 center">
+            <Link to="/singleList">
+              Single List 
+            </Link>
+          </li> */}
           <li className="col align-self-center justify-content-around mx-1 center">
             <Link to="/home">
               Stores
@@ -42,11 +47,11 @@ function Nav() {
   return (
     <header className="container-fluid">
       <div className="row">
-      <h2 className="col justify-content-center center">
-        <Link to="/">
+      <h1 className="col center">
+        <Link to="/Home">
           Grocer-EZ
         </Link>
-      </h2>
+      </h1>
       </div>
       <nav>
         {showNavigation()}

@@ -16,6 +16,20 @@ const Home = () => {
 
   return (
     <main>
+              {loggedIn && userData ? (
+          <div className="container col-12 col-lg-3 mb-3">
+            <br></br>
+            <div className="row">
+            <StoreList
+              stores={userData.me.stores}
+            />
+            </div>
+
+           <button className="row">Add a Store</button>
+
+          </div>
+          
+        ) : null}
       <div className="flex-row justify-space-between">
         <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
           {loading ? (
@@ -23,6 +37,7 @@ const Home = () => {
           ) : (
             <StoreList stores={stores} title="Your Stores:" />
           )}
+          
         </div>
         {loggedIn && userData ? (
           <>
@@ -38,6 +53,7 @@ const Home = () => {
         {modalDisplay && <AddStore setModalDisplay={setModalDisplay}/>}
           </>
         ) : null}
+
         
       </div>
     </main>

@@ -21,6 +21,9 @@
     "react-bootstrap": "^1.6.0",
     "react-dom": "^17.0.2",
     "react-native": "^0.64.1"
+    "apollo-server-express": "^2.24.1",
+    "graphql": "^15.5.0",
+    "if-env": "^1.0.4"
   },
   "devDependencies": {
     "concurrently": "^5.1.0"

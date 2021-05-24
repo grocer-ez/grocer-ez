@@ -22,7 +22,7 @@ db.once('open', async () => {
       }
     ]      
     },
-    { name: 'Raplhs',
+    { name: 'Ralphs',
       list: 
       [
         {

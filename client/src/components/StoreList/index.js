@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import $ from 'jquery';
 import Modal from "react-bootstrap/Modal";
 
 
@@ -81,14 +80,14 @@ const StoreList = ({ stores }) => {
   {
     stores.list ? stores.list.map((element, index)=>{
       return index % 2 ?
-      <div>
+      <div style={{ backgroundColor: "grey", color: "black"}}>
       <h3>{element.item}</h3>
       <p>Quantity: {element.quantity}</p>
       <button type="button" class="btn btn-primary" onClick={addItem}>Add Item</button>
       <button type="button" class="btn btn-primary"onClick={deleteItem}>Delete Item</button>
       <button type="button" class="btn btn-primary"onClick={() => deleteList(stores._id)}>Delete List</button>
       </div> :
-      <div>
+      <div style={{ backgroundColor: "white", color: "black"}}>
          <h3>{element.item}</h3>
       <p>Quantity: {element.quantity}</p>
       <button type="button" class="btn btn-primary" onClick={addItem}>Add Item</button>

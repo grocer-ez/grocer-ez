@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useMutation } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 
-function Signup(props) {
+function Signup() {
+  let history = useHistory();
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
 
@@ -16,8 +17,10 @@ function Signup(props) {
         username: formState.username
       }
     });
+    console.log(mutationResponse)
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
+    history.push("/Home");
   };
 
   const handleChange = event => {
@@ -31,7 +34,7 @@ function Signup(props) {
   return (
     <div className="container my-1 ">
       <h2>Signup</h2>
-      <div class="d-flex justify-content-center">
+      <div className="d-flex container justify-content-center position-absolute top-50 start-50 translate-middle mobile grey">
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <label htmlFor="username">Username:</label>
