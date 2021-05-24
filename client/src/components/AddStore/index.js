@@ -1,44 +1,50 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Modal from "react-bootstrap/Modal";
+import axios from 'axios';
+
+const AddStore = (props) => {
+  const [modalDisplay, setModalDisplay] = useState(false);
 
 
-const AddStore = () => {
-  console.log("test")
+  const inputSaveHandler = ()=>{
+ 
+    //just need correct url and correct query in the post request
+    
+  //https://github.com/axios/axios
+    axios.post(
+      'http://localhost:3001/graphql',
+      {
+        me:{
+        stores:{
+          name:"test"
+        }}
+      }
+    ) 
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  };
+  const onClose = ()=>{
+    props.setModalDisplay(false);
+  }
 
   return (
-    
+   <div>
     <Modal show={true}>
-    <Modal.Header>Hi</Modal.Header>
-    <Modal.Body>asdfasdf</Modal.Body>
-    <Modal.Footer>This is the footer</Modal.Footer>
+    <Modal.Header>Add a New Store</Modal.Header>
+    <Modal.Body>
+      <input type='text' id='storeName'></input>
+    </Modal.Body>
+    <Modal.Footer>
+     <button onClick={onClose}>Close</button>
+    <button onClick={inputSaveHandler}>Save</button> 
+    </Modal.Footer>
   </Modal>
-
-
-/* <div class="modal" id="myModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add A New Store</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <form>
-  <div class="mb-3">
-    <label for="storeName" class="form-label">Store Name</label>
-    <input type="text" class="form-control"></input>
   </div>
-</form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> */
 )
 };
-
-// AddStore()
 
 export default AddStore

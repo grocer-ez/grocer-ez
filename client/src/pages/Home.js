@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import StoreList from '../components/StoreList';
 import AddStore from '../components/AddStore';
 
@@ -7,6 +7,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_STORES, QUERY_ME } from '../utils/queries';
 
 const Home = () => {
+  const [modalDisplay, setModalDisplay] = useState(false);
   const { loading, data } = useQuery(QUERY_STORES);
   const { data: userData } = useQuery(QUERY_ME);
   const stores = data?.stores || [];
@@ -24,16 +25,18 @@ const Home = () => {
           )}
         </div>
         {loggedIn && userData ? (
+          <>
           <div className="col-12 col-lg-3 mb-3">
-            <h3 className="card-header text-align">Your Stores:</h3>
+           
             <StoreList
               stores={userData.me.stores}
             />
 
-           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onClick={AddStore}>Add a Store</button>
+           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onClick={() => setModalDisplay(true)}>Add a Store</button>
 
           </div>
-          
+        {modalDisplay && <AddStore setModalDisplay={setModalDisplay}/>}
+          </>
         ) : null}
         
       </div>

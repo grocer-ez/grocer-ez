@@ -15,7 +15,7 @@ function Nav() {
           </li>
           <li className="col align-self-center justify-content-around mx-1 center">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
+            <a href="/home" onClick={() => Auth.logout()}>
               Logout
             </a>
           </li>
@@ -30,7 +30,7 @@ function Nav() {
             </Link>
           </li>
           <li className="col align-self-center justify-content-around mx-1 center">
-            <Link to="/login">
+            <Link to="/">
               Login
             </Link>
           </li>
