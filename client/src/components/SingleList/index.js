@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SingleList = ({ store }) => {
-  console.log(store);
+  console.log("SingleStore",store);
   return (
     <div> 
       <h3 className='container position-absolute top-50 start-50 translate-middle'>test</h3> 
