@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const StoreList = ({ stores }) => {
-
+  console.log("Stores",stores);
   if (!stores.length === 0) {
     return <h3>No Stores Yet</h3>;
   }
@@ -15,7 +15,7 @@ const StoreList = ({ stores }) => {
             <p className="card-header">
               <Link
               // should the link be to stores.name?
-                to={`/singlelist/${stores._id}`}
+                to={`/list/${stores._id}`}
                 style={{ fontWeight: 700}}
               >
                 {stores.name}
