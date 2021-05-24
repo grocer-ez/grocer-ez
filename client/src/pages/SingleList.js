@@ -27,7 +27,7 @@ const List = props => {
           {loggedIn && data ? (
              <div className="card mb-3">
                  <SingleList store={storeId} />
-               <h1> Lorem Ipsum </h1>
+               <h1> Display Store Name and list here </h1>
              <div className="card-body">
      
              </div>
