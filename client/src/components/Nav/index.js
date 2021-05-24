@@ -10,7 +10,7 @@ function Nav() {
         <ul className="row center">
 
           <li className="col center">
-            <Link to="/home">
+            <Link to="/Home">
               Stores
             </Link>
           </li>
@@ -46,7 +46,7 @@ function Nav() {
       <div className="row">
       <h1 className="center">
         <Link to="/Home">
-          Grocer-EZ
+          <span  style={{fontFamily: "Lucida Handwriting", color: "rgba(219, 107, 33, 0.61)"}}>Grocer<span style={{color: "white"}}>-EZ</span></span>
         </Link>
       </h1>
       </div>

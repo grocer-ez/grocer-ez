@@ -1,5 +1,5 @@
 :root {
-  --primary: royalblue;
+  --primary: rgb(38, 87, 128);
   --light: white;
   --dark: black;
   --error: rgb(228, 1, 1);
@@ -87,6 +87,7 @@ p {
 
 .center {
   text-align: center;
+  align-items: center;
 }
 
 a {
@@ -95,14 +96,30 @@ a {
   font-weight: bold;
 }
 
+
 a:hover {
   color: var(--primary);
-  text-shadow: 1px 1px darkred;
+  text-shadow: 1px 1px rgba(219, 107, 33, 0.61);
+  animation: shake 0.5s .5s;
 }
 
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
 
 header a {
   color: var(--light);
+  position: sticky;
 }
 
 button {
@@ -114,7 +131,7 @@ button {
   outline: none;
   cursor: pointer;
   margin: 0 1px;
-  background-color: var(--primary);
+  background-color: rgba(219, 107, 33, 0.61);
   box-shadow: 1px 0px 5px var(--primary);
 }
 
@@ -235,6 +252,12 @@ input:focus {
   box-shadow: 1px 0px 5px var(--primary);
 
 }
+
+/* .card-body {
+  margin: auto;
+  width: 100px;
+  padding: 10px;
+} */
 
 .list {
   padding: 5px;

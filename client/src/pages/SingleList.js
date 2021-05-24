@@ -1,13 +1,26 @@
 import React from 'react';
-import SingleList from '../components/SingleList';
+import List from '../components/SingleList';
 import Auth from '../utils/auth';
+import ReactDOM from "react-dom";
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_STORES, QUERY_ME } from '../utils/queries';
+import {  QUERY_STORE } from '../utils/queries';
+import { BrowserRouter, Route } from 'react-router-dom'
+const AppRouter = () => (
+    <BrowserRouter>
+    <Route path='/singlelist/:parameter/' render={(props) => <SingleList {...props} />} />
+    </BrowserRouter>
+  );
 
-const Home = () => {
-  const { loading, data } = useQuery(QUERY_STORES);
-  const { data: userData } = useQuery(QUERY_ME);
-  const stores = data?.stores || [];
+
+const SingleList = ( props ) => {
+
+    const { parameter } = props.match.params;
+
+    console.log(parameter)
+    const { loading, data } = useQuery(QUERY_STORE);
+    const { data: userData } = useQuery(QUERY_STORE);
+    const store = data?.store || [];
+    console.log(store)
 
   const loggedIn = Auth.loggedIn();
 
@@ -17,12 +30,10 @@ const Home = () => {
           <div className="container col-12 col-lg-3 mb-3">
             <br></br>
             <div className="row">
-            <SingleList
-              stores={userData.me.stores}
+            <List
+              store={userData.store}
             />
             </div>
-
-           <button className="row">Add a Store</button>
 
           </div>
           
@@ -33,7 +44,7 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <SingleList stores={stores} title="Your Stores:" />
+            <List store={store} title="Your Store:" />
           )}
           
         </div>
@@ -44,4 +55,5 @@ const Home = () => {
   );
 };
 
-export default Home;
+ReactDOM.render(<AppRouter />, document.getElementById("root"));
+export default SingleList;

@@ -1,12 +1,24 @@
 // import { stripIgnoredCharacters } from 'graphql';
+// import { fromPromise } from 'apollo-link';
+// import ReactDOM from "react-dom";
 import React from 'react';
-// import { Link } from 'react-router-dom';
+// import { BrowserRouter, Route } from 'react-router-dom'
 
-const SingleList = ({ stores }) => {
+// const AppRouter = () => (
+//   <BrowserRouter>
+//   <Route path='/singlelist/:parameter/' render={(props) => <List {...props} />} />
+//   </BrowserRouter>
+// );
+
+const List = ( { store }) => {
+  // const { parameter } = props.match.params;
+
+  // console.log(parameter)
+  console.log(store)
   return (
     <div className='container position-absolute top-50 start-50 translate-middle'>
-      {stores.filter(stores.list => store.includes(${stores._id})).map(filteredStore => (
-          <div key={element._id} className="card mb-3">
+  {store.filter(name => name.includes(store)).map(element => (
+    <div key={element._id} className="card mb-3">
             <p className="card-header">
                 {element.name}
             </p>
@@ -30,9 +42,12 @@ const SingleList = ({ stores }) => {
               </div>
             </div>
           </div>
-      ))}
+  ))}
     </div>
   );
 };
+// ReactDOM.render(<AppRouter />, document.getElementById("root"));
 
-export default SingleList;
+export default List;
+
+
