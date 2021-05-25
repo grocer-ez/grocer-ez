@@ -60,22 +60,22 @@ const StoreList = ({ stores }) => {
   return (
     <div>
 
-      {stores &&
-        stores.map((stores, idxStore) => (
-          <div className ="container">
-            <div className="row">
-              <div className="col justify-content-center">
-          <div key={stores._id} className="card mb-3">
-            <p className="card-header">
-              <Link
-                to={`/singlelist/${stores.name}`}
-                style={{ fontWeight: 700 }}
-                className="text-dark"
-              >
-                {stores.name}
-              </Link>{' '}
-            </p>
-            <div className="card-body">
+    {stores &&
+      stores.map((stores, idxStore) => (
+        <div className ="container">
+          <div className="row">
+            <div className="col justify-content-center">
+        <div key={stores._id} className="card mb-3">
+          <p className="card-header">
+            <Link
+              to={`/singlelist/${stores.name}`}
+              style={{ fontWeight: 700 }}
+              className="text-dark"
+            >
+              {stores.name}
+            </Link>{' '}
+          </p>
+          <div className="card-body">
 <div>
   {
     stores.list ? stores.list.map((element, index)=>{

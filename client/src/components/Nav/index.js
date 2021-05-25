@@ -8,17 +8,13 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <ul className="row center">
-          {/* <li className="col align-self-center justify-content-around mx-1 center">
-            <Link to="/singleList">
-              Single List 
-            </Link>
-          </li> */}
-          <li className="col align-self-center justify-content-around mx-1 center">
-            <Link to="/home">
+
+          <li className="col center">
+            <Link to="/Home">
               Stores
             </Link>
           </li>
-          <li className="col align-self-center justify-content-around mx-1 center">
+          <li className="col center">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/home" onClick={() => Auth.logout()}>
               Logout
@@ -45,18 +41,19 @@ function Nav() {
   }
 
   return (
-    <header className="container-fluid">
+    <header className="container">
+    <nav className="navbar fixed-top row grey">
       <div className="row">
-      <h1 className="col center">
+      <h1 className="center">
         <Link to="/Home">
-          Grocer-EZ
+          <span  style={{fontFamily: "Lucida Handwriting", color: "rgba(219, 107, 33, 0.61)"}}>Grocer<span style={{color: "white"}}>-EZ</span></span>
         </Link>
       </h1>
       </div>
-      <nav>
+      <div>
         {showNavigation()}
-      </nav>
-     
+      </div>
+     </nav>
     </header>
   );
 }

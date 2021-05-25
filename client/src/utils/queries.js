@@ -20,8 +20,8 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_STORE = gql`
-query store($_id: ID!){
-  store(_id:$_id){
+query store($id: ID!){
+  store(_id:$id){
     _id
     name
     list{

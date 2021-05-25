@@ -49,3 +49,26 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_ITEM = gql`
+  mutation addItem($id: ID!) {
+    addItem(itemId: $id) {
+      _id
+      item {
+        _id
+      }
+    }
+  }
+`;
+
+export const REMOVE_ITEM = gql`
+  mutation removeItem($id: ID!) {
+    removeItem(id: $id) {
+      _id
+      username
+      item {
+        _id
+      }
+    }
+  }
+`;
