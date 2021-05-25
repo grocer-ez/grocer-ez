@@ -12,18 +12,18 @@ const resolvers = {
         .populate('stores')        
         return userData
       }
-      return new AuthenticationError('Not Loggerd In!');
+      return new AuthenticationError('Not Logged In!');
     },
 
     store: async (parent, { _id }) => {      
-      return await Store.findOne({ _id });     
+      return await Store.findOne ({ _id });     
     }    
   },
+
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
-
       return { token, user };
     },   
    

@@ -4,13 +4,13 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
 import Home from "./pages/Home";
-// import SingleList from "./pages/SingleList"
+import SingleList from "./pages/SingleList"
 import NoMatch from "./pages/NoMatch";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
 import { StoreProvider } from "./utils/GlobalState";
-import Success from "./pages/Success";
+// import Success from "./pages/Success";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -35,8 +35,10 @@ function App() {
               <Route exact path="/" component={Login} />
               <Route exact path="/home" component={Home} />
               <Route exact path="/signup" component={Signup} />
-              <Route exact path="/success" component={Success} />
-              {/* <Route exact path="/singleList/:id" component={SingleList} /> */}
+              {/* <Route exact path="/success" component={Success} /> */}
+              <Route exact path="/list/:id" component={SingleList} />
+
+
               <Route component={NoMatch} />
             </Switch>
           </StoreProvider>

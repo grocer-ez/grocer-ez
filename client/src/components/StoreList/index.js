@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import { Link, useParams} from 'react-router-dom';
 import { idbPromise } from '../../utils/helpers'
@@ -39,36 +40,43 @@ const StoreList = ({ stores }) => {
 
 
 
+=======
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const StoreList = ({ stores }) => {
+  console.log("Stores",stores);
+>>>>>>> 97faf4e411e2f51ee166de8c86d8666e915f552b
   if (!stores.length === 0) {
     return <h3>No Stores Yet</h3>;
   }
   return (
-    <div className='container position-absolute top-50 start-50 translate-middle'>
+    <div className='container center'>
       {stores &&
         stores.map(stores => (
-          <div key={stores._id} className="card mb-3">
-            <p className="card-header">
+          <div key={stores.list._id} className="card mb-3">
+            <h2 className="card-header">
               <Link
               // should the link be to stores.name?
-                to={`/singlelist/${stores._id}`}
+                to={`/list/${stores._id}`}
                 style={{ fontWeight: 700}}
               >
                 {stores.name}
                 
               </Link>{' '}
-            </p>
+            </h2>
             <div className="card-body row">
 
-            <div>
+            <div >
               {stores.list ? 
                   //array.map() returns an array of stuff.
                   stores.list.map((element, index)=>{
                     return index % 2 ?
-                    <div style={{ backgroundColor: "grey", color: "black"}}>
+                    <div key={stores.list.item} style={{ backgroundColor: "grey", color: "black"}}>
                       <h3>{element.item}</h3>
                       <p>Quantity: {element.quantity}</p>
                     </div> : 
-                    <div style={{ backgroundColor: "white", color: "black"}}>
+                    <div key={stores.id} style={{ backgroundColor: "white", color: "black"}}>
                       <h3>{element.item}</h3>
                       <p>Quantity: {element.quantity}</p>
                     </div>
