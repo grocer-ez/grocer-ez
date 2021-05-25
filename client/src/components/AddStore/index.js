@@ -45,6 +45,7 @@ const AddStore = (props) => {
   </Modal>
   </div>
 )
-};
-};
+}; 
+}; 
+
 export default AddStore;
