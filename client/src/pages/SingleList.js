@@ -23,7 +23,8 @@ const List = props => {
   console.log("Name", data);
 
   return (
-    <div>
+    <div className="container">
+        <br></br>
       <div className="card mb-3">
     <p className="card-header">
       <span style={{ fontWeight: 700 }} className="text-light">
