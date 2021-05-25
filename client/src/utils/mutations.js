@@ -1,16 +1,5 @@
 import gql from 'graphql-tag';
 
-export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
-      token
-      user {
-        _id
-      }
-    }
-  }
-`;
-
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -22,71 +11,64 @@ export const LOGIN = gql`
   }
 `;
 
-
+export const ADD_LIST = gql`
+mutation addList($storeId: ID!, $item: String!, $quantity: Int!) {
+  addList(storeId: $storeId, item: $item, quantity: $quantity) {
+    _id
+    name
+    username
+    lists {
+      _id
+      item
+      quantity
+      username
+    }
+    
+  }
+}
+`;
 export const ADD_STORE = gql`
-mutation addStore($_id: ID!, $name: String!) {
-  addStore(_id: $_id, name: $name) {
+mutation addStore($name: String!) {
+  addStore(name: $name) {
     _id
     name
     createdAt
-    username
-  }
-}
-`;
-
-export const UPDATE_STORE = gql `
-mutation updateStore($_id: ID!, $name: String!) {
-  updateStore(_id: $_id, name: $name) {
-    _id
-    name
+    username    
   }
 }
 `;
 
 
-
-export const ADD_LIST = gql`
-mutation addList($_id: ID!, $item: String!, $quantity: Int!) {
-  addList(_id: $_id, item: $item, quantity: $quantity) {
-    _id
-    name
-    list {
-      _id
-      item
-      quantity
+export const ADD_USER = gql`
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+      }
     }
   }
-}
+`;
+
+export const ADD_ITEM = gql`
+  mutation addItem($id: ID!) {
+    addItem(itemId: $id) {
+      _id
+      item {
+        _id
+      }
+    }
+  }
 `;
 
 export const REMOVE_ITEM = gql`
-mutation removeItem($storeId: ID!, $itemId: ID!) {
-  removeItem(storeId:$storeId, itemId:$itemId) {
-    _id
-    name
-    list {
+  mutation removeItem($id: ID!) {
+    removeItem(id: $id) {
       _id
-      item
-      quantity
+      username
+      item {
+        _id
+      }
     }
   }
-}
 `;
-
-export const CLEAR_LIST = gql`
-mutation clearList($storeId: ID!) {
-  clearList(storeId: $storeId) {
-    _id
-    name
-    list {
-      _id
-      item
-      quantity
-    }
-  }
-}
-`;
-
-
-
-

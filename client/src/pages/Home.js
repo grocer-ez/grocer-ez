@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <main>
               {loggedIn && userData ? (
-          <div className="container col-12 col-lg-3 mb-3">
+          <div className="container">
             <br></br>
             <div className="row">
             <StoreList
