@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Modal from "react-bootstrap/Modal";
+import { Modal } from "react-bootstrap";
 // import axios from 'axios';
 
 const AddStore = (props) => {
@@ -29,23 +29,23 @@ const AddStore = (props) => {
   // };
   // const onClose = ()=>{
   //   props.setModalDisplay(false);
-  // }
+  }
 
   return (
    <div>
+    <h1>{props.userData}</h1>
     <Modal show={true}>
-    <Modal.Header>Add a New Store</Modal.Header>
+    <Modal.Header>{props.data.me.stores}</Modal.Header>
     <Modal.Body>
       <input type='text' id='storeName'></input>
     </Modal.Body>
     <Modal.Footer>
-     <button onClick={onClose}>Close</button>
+     {/* <button onClick={onClose}>Close</button> */}
     <button onClick={inputSaveHandler}>Save</button> 
     </Modal.Footer>
   </Modal>
   </div>
 )
-}; 
-}; 
+};  
 
 export default AddStore;
