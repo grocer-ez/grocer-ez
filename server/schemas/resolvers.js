@@ -29,7 +29,6 @@ const resolvers = {
       return { token, user };
     },   
    
-
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, { new: true });
@@ -91,13 +90,13 @@ const resolvers = {
 
     addList: async (parent, { _id, item, quantity }, context) => {
       if (context.user) {
-        const updatedList = await Store.findOneAndUpdate(
+        const addList = await Store.findOneAndUpdate(
           {_id:_id},
           {$push: {list: {item: item, quantity: quantity}  } } ,
           { new: true}
         );
 
-        return updatedList;
+        return addList;
       }
 
       throw new AuthenticationError('You need to be logged in!');
