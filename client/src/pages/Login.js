@@ -3,12 +3,10 @@ import { useMutation } from '@apollo/react-hooks';
 import { useHistory } from "react-router-dom";
 import { LOGIN } from "../utils/mutations"
 import Auth from "../utils/auth";
-
 function Login() {
   let history = useHistory();
   const [formState, setFormState] = useState({ email: '', password: '' })
   const [login, { error }] = useMutation(LOGIN);
-
   const handleFormSubmit = async event => {
     event.preventDefault();
     try {
@@ -20,7 +18,6 @@ function Login() {
       console.log(e)
     }
   };
-
   const handleChange = event => {
     const { name, value } = event.target;
     setFormState({
@@ -28,15 +25,16 @@ function Login() {
       [name]: value
     });
   };
-
   return (
     <div className="container my-1">
-       <h2>Login</h2>
+      {/* <Link to="/signup">
+        ← Go to Signup
+      </Link> */}
+      <h2>Login</h2>
       <div className="d-flex container justify-content-center position-absolute top-50 start-50 translate-middle mobile grey">
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <label htmlFor="email">Email address:</label>
-          <br></br>
           <input
             placeholder="youremail@test.com"
             name="email"
@@ -47,7 +45,6 @@ function Login() {
         </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="pwd">Password:</label>
-          <br></br>
           <input
             placeholder="******"
             name="password"
@@ -71,6 +68,4 @@ function Login() {
     </div>
   );
 }
-
-
 export default Login;

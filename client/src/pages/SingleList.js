@@ -8,20 +8,20 @@ import { QUERY_STORE } from '../utils/queries'
 
 const List = props => {
   // console.log("Props",props)
-
+  
   const { id: storeId } = useParams();
   console.log("StoreId", storeId)
   const { loading, data } = useQuery(QUERY_STORE, {
-    variables: { id: storeId }, 
-  });
-  console.log("StoreData", data)
-
-  const store = data?.store || {};
-  console.log("Store", store);
-
-  // const loggedIn = Auth.loggedIn();
-  console.log("Name", data);
-
+      variables: { id: storeId }, 
+    });
+    console.log("StoreData", data)
+    
+    const store = data?.store || {};
+    console.log("Store", store);
+    
+    console.log("Name", data);
+    
+    // const loggedIn = Auth.loggedIn();
   return (
     <div>
       <div className="card mb-3">
