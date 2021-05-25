@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Modal from "react-bootstrap/Modal";
-import axios from 'axios';
+// import axios from 'axios';
 
 const AddStore = (props) => {
   const [modalDisplay, setModalDisplay] = useState(false);
@@ -11,25 +11,25 @@ const AddStore = (props) => {
     //just need correct url and correct query in the post request
     
   //https://github.com/axios/axios
-    axios.post(
-      'http://localhost:3001/graphql',
-      {
-        me:{
-        stores:{
-          name:"test"
-        }}
-      }
-    ) 
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  };
-  const onClose = ()=>{
-    props.setModalDisplay(false);
-  }
+  //   axios.post(
+  //     'http://localhost:3001/graphql',
+  //     {
+  //       me:{
+  //       stores:{
+  //         name:"test"
+  //       }}
+  //     }
+  //   ) 
+  //   .then(function (response) {
+  //     console.log(response);
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  // };
+  // const onClose = ()=>{
+  //   props.setModalDisplay(false);
+  // }
 
   return (
    <div>
@@ -45,6 +45,7 @@ const AddStore = (props) => {
   </Modal>
   </div>
 )
-};
+}; 
+}; 
 
-export default AddStore
+export default AddStore;
