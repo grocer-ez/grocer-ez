@@ -1,109 +1,56 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React from 'react'
+// import SingleList from '../components/SingleList';
+// import Auth from '../utils/auth';
+import { useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_ME } from "../utils/queries";
-// import listSchema from "../../../server/models/List";
+// import { QUERY_STORE } from '../utils/queries';
+import { QUERY_STORE } from '../utils/queries'
 
-function ThisList() {
-    const { data } = useQuery(QUERY_ME);
-    let user;
-  
-    if (data) {
-      user = data.user;
-    }
-  
-    return (
-      <>
-        <div className="container my-1">
-          <Link to="/home">
-            ← Back to Stores
-            </Link>
-  
-          {user ? (
-            <>
-              <h2>{ user.stores.name }</h2>
-              {user.storeSchema.map((storeSchema) => (
-                <div key={storeSchema.listSchema._id} className="my-2">
-                  <h3>{new Date(parseInt(storeSchema.listSchema.createdAt)).toLocaleDateString()}</h3>
-                  <div className="flex-row">
-                    {storeSchema.listSchema.map(({ item }, index) => (
-                      <div key={index} className="card px-1 py-1">
-                          <p>{item}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </>
-          ) : null}
-  
-        </div>
-  
-      </>)
-  
-  };
+const List = props => {
+  // console.log("Props",props)
 
+  const { id: storeId } = useParams();
+  console.log("StoreId", storeId)
+  const { loading, data } = useQuery(QUERY_STORE, {
+    variables: { id: storeId }, 
+  });
+  console.log("StoreData", data)
 
-export default ThisList;
+  const store = data?.store || {};
+  console.log("Store", store);
 
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import { pluralize } from "../../utils/helpers"
-// import { useStoreContext } from "../../utils/GlobalState";
-// import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
-// import { idbPromise } from "../../utils/helpers";
+  // const loggedIn = Auth.loggedIn();
+  console.log("Name", data);
 
-// function ProductItem(item) {
-//   const [state, dispatch] = useStoreContext();
+  return (
+    <div className="container">
+        <br></br>
+      <div className="card mb-3">
+    <p className="card-header">
+      <span style={{ fontWeight: 700 }} className="text-light">
+        {store.name}
+      </span>{' '}
+      {/* thought on {thought.createdAt} */}
+    </p>
+    <div className="card-body">
+      {store.list ?
+        store.list.map((element, index) =>{
+          return index % 2 ?
+          <div style={{ backgroundColor: "grey", color: "black"}}>
+            <h3>{element.item}</h3>
+            <p>Quantity: {element.quantity}</p>
+            </div> :
+            <div style={{ backgroundColor: "white", color: "black"}}>
+            <h3>{element.item}</h3>
+            <p>Quantity: {element.quantity}</p>
+          </div>
+        })
+        : <p>No List found</p>
+      }
+    </div>
+  </div>
+    </div>
+  );
+};
 
-//   const {
-//     image,
-//     name,
-//     _id,
-//     price,
-//     quantity
-//   } = item;
-
-//   const { cart } = state
-
-//   const addToCart = () => {
-//     const itemInCart = cart.find((cartItem) => cartItem._id === _id)
-//     if (itemInCart) {
-//       dispatch({
-//         type: UPDATE_CART_QUANTITY,
-//         _id: _id,
-//         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-//       });
-//       idbPromise('cart', 'put', {
-//         ...itemInCart,
-//         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-//       });
-//     } else {
-//       dispatch({
-//         type: ADD_TO_CART,
-//         product: { ...item, purchaseQuantity: 1 }
-//       });
-//       idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
-//     }
-//   }
-
-//   return (
-//     <div className="card px-1 py-1">
-//       <Link to={`/products/${_id}`}>
-//         <img
-//           alt={name}
-//           src={`/images/${image}`}
-//         />
-//         <p>{name}</p>
-//       </Link>
-//       <div>
-//         <div>{quantity} {pluralize("item", quantity)} in stock</div>
-//         <span>${price}</span>
-//       </div>
-//       <button onClick={addToCart}>Add to cart</button>
-//     </div>
-//   );
-// }
-
-// export default ProductItem;
+export default List;
