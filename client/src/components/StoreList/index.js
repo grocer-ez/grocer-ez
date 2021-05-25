@@ -1,8 +1,43 @@
-// import { stripIgnoredCharacters } from 'graphql';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link, useParams} from 'react-router-dom';
+import { idbPromise } from '../../utils/helpers'
+import {  UPDATE_STORE } from "../../utils/actions";
+import { QUERY_ME } from "../../utils/queries";
+import { useQuery } from '@apollo/react-hooks';
+import { useStoreContext } from "../../utils/GlobalState";
 
 const StoreList = ({ stores }) => {
+
+  const [state, dispatch] = useStoreContext();  
+  
+
+  const { loading, data } = useQuery(QUERY_ME);
+  console.log("test", data)
+  
+  useEffect(() => {
+   if(data) {      
+      dispatch({
+           type: UPDATE_STORE,
+            stores: data.me
+        });
+        console.log('dispatch',data.me)
+        data.me.stores.forEach((stores) => {
+          console.log('Store', stores)
+          idbPromise('stores', 'put', stores);
+        });
+    } else if (!loading) {
+      console.log('loading', stores)
+      idbPromise('stores', 'get').then((stores) => {
+        dispatch({
+          type: UPDATE_STORE,
+         stores: data
+       });
+      });
+    }
+  }, [data, loading, dispatch]);
+
+
+
 
   if (!stores.length === 0) {
     return <h3>No Stores Yet</h3>;

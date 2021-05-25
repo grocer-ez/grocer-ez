@@ -15,10 +15,8 @@ const resolvers = {
       return new AuthenticationError('Not Loggerd In!');
     },
 
-    store: async (parent, { _id }, context) => {
-      if(context.user){
-      return await Store.findById ({ _id });
-    }    
+    store: async (parent, { _id }) => {      
+      return await Store.findOne({ _id });     
     }    
   },
   Mutation: {

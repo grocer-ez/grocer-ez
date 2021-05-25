@@ -6,7 +6,7 @@ const { Provider } = StoreContext;
 
 const StoreProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useProductReducer({
-    store: [],
+    stores: [],
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

@@ -44,7 +44,7 @@ export const reducer = (state, action) => {
     case UPDATE_STORE:
       return {
         ...state,
-        categories: [...action.categories],
+        stores: [action.stores],
       };
 
     case REMOVE_STORE:

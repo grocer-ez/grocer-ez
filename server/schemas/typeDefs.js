@@ -50,7 +50,7 @@ const typeDefs = gql`
     user: User    
     stores(username: String): [Store]
     me: User
-    store(_id:ID!): Store
+    store(_id: ID!): Store
   }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth    
