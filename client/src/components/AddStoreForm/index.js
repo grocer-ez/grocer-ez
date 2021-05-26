@@ -50,9 +50,9 @@ const StoreForm = () => {
   return (
     <div className="container">
       <form className="flex-row justify-center" onSubmit={handleFormSubmit}>
-        <textarea placeholder="Store Name Here:" value={name}
-         className="form-input col-12 col-md-9" onChange={handleChange}></textarea>
-          <button onClick={refreshPage} className="" type="submit">
+        <input placeholder="Store Name Here:" value={name}
+         className="form-input col-md-9" onChange={handleChange}></input>
+      <button onClick={refreshPage} type="submit">
           Add Store
         </button>
       </form>

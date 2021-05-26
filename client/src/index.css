@@ -277,10 +277,32 @@ input:focus {
   color: var(--error);
 }
 
+input {
+  background-color: black;
+  box-shadow: 1px 0px 5px var(--primary);
+  margin-right: 10px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+@media screen and (min-width: 780px) {
+  
+
+form {
+  margin-left: 25%;
+  margin-right:25%;
+  width: 50%;
+}
+}
+
 @media screen and (max-width: 768px) {
   .card {
     width: 100%;
   }
+
 
   .mobile {
     box-shadow: 1px 0px 5px var(--primary);
