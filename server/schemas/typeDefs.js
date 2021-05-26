@@ -47,7 +47,9 @@ const typeDefs = gql`
     addStore(name: String!): Store
     updateList(_id: ID!, list:ListInput): Store
     addList(_id: ID!, item:String!, quantity: Int!): Store
-    updateStore( _id: ID!, name: String!): Store      
+    updateStore( _id: ID!, name: String!): Store 
+    removeItem(storeId: ID!, itemId: ID!): Store
+    clearList(storeId: ID!): Store     
   }
 `;
 

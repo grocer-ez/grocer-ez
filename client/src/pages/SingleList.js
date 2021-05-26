@@ -1,5 +1,7 @@
 import React from 'react'
 // import SingleList from '../components/SingleList';
+import AddListForm from '../components/AddListForm'
+
 // import Auth from '../utils/auth';
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks';
@@ -42,12 +44,14 @@ const List = props => {
             </div> :
             <div style={{ backgroundColor: "white", color: "black"}}>
             <h3>{element.item}</h3>
-            <p>Quantity: {element.quantity}</p>
+            <p>Quantity: {element.quantity}</p>           
           </div>
+          
         })
         : <p>No List found</p>
       }
     </div>
+    <div class="card-footer bg-transparent border-success">< AddListForm/></div>
   </div>
     </div>
   );

@@ -3,9 +3,12 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_STORE } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
+import { useParams } from 'react-router-dom'
 
 const StoreForm = () => {
   const [name, setName] = useState('');
+  const { id: storeId } = useParams();
+  console.log("FORM PARAMS", storeId)
 
   const [addStore, { error }] = useMutation(ADD_STORE, {
     update(cache, { data: { addStore } }) {

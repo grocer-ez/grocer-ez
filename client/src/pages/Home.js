@@ -1,6 +1,7 @@
 import React from 'react';
 import StoreList from '../components/StoreList';
 import AddStoreForm from '../components/AddStoreForm';
+import AddListForm from '../components/AddListForm';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_STORE, QUERY_ME } from '../utils/queries';
@@ -32,7 +33,7 @@ const Home = () => {
         <div className="flex-row justify-space-between">
         {loggedIn && (
           <div className="col-12 mb-3">
-            <AddStoreForm />
+            <AddStoreForm />            
           </div>
         )}
         </div>
