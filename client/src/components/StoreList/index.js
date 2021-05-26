@@ -13,7 +13,6 @@ const StoreList = ({ stores }) => {
           <div key={stores.list._id} className="card mb-3">
             <h2 className="card-header">
               <Link
-              // should the link be to stores.name?
                 to={`/list/${stores._id}`}
                 style={{ fontWeight: 700}}
               >
@@ -25,7 +24,6 @@ const StoreList = ({ stores }) => {
 
             <div >
               {stores.list ? 
-                  //array.map() returns an array of stuff.
                   stores.list.map((element, index)=>{
                     return index % 2 ?
                     <div key={stores.list.item} style={{ backgroundColor: "grey", color: "black"}}>
@@ -39,8 +37,6 @@ const StoreList = ({ stores }) => {
                   }) 
                 : <p>No lists found.</p>}
               </div>
-
-                {/* insert store.list? here to display list item. Could just dispaly items 1-3 to make it mobile friendly? */}
             </div>
           </div>
         ))}

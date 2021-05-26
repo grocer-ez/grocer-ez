@@ -59,4 +59,10 @@ const StoreForm = () => {
   );
 };
 
+{/* <button type="button" class="btn btn-primary"onClick={() => deleteList(stores._id)}>Delete List</button>*/}
+
+// const deleteList = (_id) => {
+//   alert(_id) 
+
+
 export default StoreForm;

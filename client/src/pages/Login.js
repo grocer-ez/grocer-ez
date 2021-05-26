@@ -31,15 +31,12 @@ function Login() {
 
   return (
     <div className="container my-1">
-      {/* <Link to="/signup">
-        ← Go to Signup
-      </Link> */}
-
-      <h2>Login</h2>
+            <h2>Login</h2>
       <div className="d-flex container justify-content-center position-absolute top-50 start-50 translate-middle mobile grey">
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <label htmlFor="email">Email address:</label>
+          <br></br>
           <input
             placeholder="youremail@test.com"
             name="email"
@@ -50,6 +47,7 @@ function Login() {
         </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="pwd">Password:</label>
+          <br></br>
           <input
             placeholder="******"
             name="password"
