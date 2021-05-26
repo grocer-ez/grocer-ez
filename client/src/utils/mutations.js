@@ -35,8 +35,8 @@ mutation addStore($name: String!) {
 `;
 
 export const UPDATE_STORE = gql `
-mutation updateStore($_id: ID!, $name: String!) {
-  updateStore(_id: $_id, name: $name) {
+mutation updateStore($id: ID!, $name: String!) {
+  updateStore(_id: $id, name: $name) {
     _id
     name
   }
@@ -46,8 +46,8 @@ mutation updateStore($_id: ID!, $name: String!) {
 
 
 export const ADD_LIST = gql`
-mutation addList($_id: ID!, $item: String!, $quantity: Int!) {
-  addList(_id: $_id, item: $item, quantity: $quantity) {
+mutation addList($id: ID!, $item: String!, $quantity: Int!) {
+  addList(_id: $id, item: $item, quantity: $quantity) {
     _id
     name
     list {

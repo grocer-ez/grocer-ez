@@ -11,7 +11,7 @@ function refreshPage() {
 const StoreForm = () => {
   const [name, setName] = useState('');
 
-  const [addStore, { error }] = useMutation(ADD_STORE, {
+  const [addStore] = useMutation(ADD_STORE, {
     update(cache, { data: { addStore } }) {
       // read what's currently in the cache
       const { me } = cache.readQuery({ query: QUERY_ME });
@@ -24,7 +24,6 @@ const StoreForm = () => {
       });
     }
   });
-  console.log("Store", addStore);
 
   const handleChange = event => {
     // if (event.target.value) {
@@ -41,7 +40,6 @@ const StoreForm = () => {
       });
       
       setName('');
-      console.log("NewStore", name)
     } catch (e) {
       console.error(e);
     }

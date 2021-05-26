@@ -3,12 +3,12 @@ import StoreList from '../components/StoreList';
 import AddStoreForm from '../components/AddStoreForm';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_STORE, QUERY_ME } from '../utils/queries';
+import { QUERY_ME } from '../utils/queries';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_STORE);
+  // const { loading, data } = useQuery(QUERY_STORE);
   const { data: userData } = useQuery(QUERY_ME);
-  const stores = data?.stores || [];
+  // const stores = data?.stores || [];
 
   const loggedIn = Auth.loggedIn();
 
@@ -37,18 +37,6 @@ const Home = () => {
         )}
         </div>
 
-        
-      {/* <div className="flex-row justify-space-between">
-        <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
-
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <StoreList stores={stores} title="Your Stores:" />
-          )}
-          
-        </div>
-      </div> */}
     </main>
   );
 };
