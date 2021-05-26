@@ -4,6 +4,10 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_STORE } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 
+function refreshPage() {
+  window.location.reload(false);
+}
+
 const StoreForm = () => {
   const [name, setName] = useState('');
 
@@ -44,18 +48,15 @@ const StoreForm = () => {
   };
 
   return (
-    <div>
-      <p className="m-0">
-        Add Store
-      </p>
-      <form className="flex-row justify-center justify-space-between-md align-stretch" onSubmit={handleFormSubmit}>
+    <div className="container">
+      <form className="flex-row justify-center" onSubmit={handleFormSubmit}>
         <textarea placeholder="Store Name Here:" value={name}
-          className="form-input col-12 col-md-9" onChange={handleChange}></textarea>
-          <button className="btn col-12 col-md-3" type="submit">
-          Submit
+         className="form-input col-12 col-md-9" onChange={handleChange}></textarea>
+          <button onClick={refreshPage} className="" type="submit">
+          Add Store
         </button>
       </form>
-    </div>
+      </div>
   );
 };
 
