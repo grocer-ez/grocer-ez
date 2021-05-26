@@ -17,7 +17,6 @@ function Signup() {
         username: formState.username
       }
     });
-    console.log(mutationResponse)
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
     history.push("/Home");
@@ -33,9 +32,6 @@ function Signup() {
 
   return (
     <div className="container my-1">
-      {/* <Link to="/login">
-        ← Go to Login
-      </Link> */}
       <h2>Signup</h2>
       <div className="d-flex container justify-content-center position-absolute top-50 start-50 translate-middle mobile grey">
       <form onSubmit={handleFormSubmit}>
@@ -49,16 +45,6 @@ function Signup() {
             onChange={handleChange}
           />
         </div>
-        {/* <div className="flex-row space-between my-2">
-          <label htmlFor="lastName">Last Name:</label>
-          <input
-            placeholder="Last"
-            name="lastName"
-            type="lastName"
-            id="lastName"
-            onChange={handleChange}
-          />
-        </div> */}
         <div className="flex-row space-between my-2">
           <label htmlFor="email">Email:</label>
           <input

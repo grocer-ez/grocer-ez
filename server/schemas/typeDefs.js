@@ -45,6 +45,8 @@ const typeDefs = gql`
     updateUser(username: String, email: String, password: String): User    
     login(email: String!, password: String!): Auth
     addStore(name: String!): Store
+    removeItem(storeId: ID!, itemId: ID!): Store
+    clearList(storeId: ID!): Store
     updateList(_id: ID!, list:ListInput): Store
     addList(_id: ID!, item:String!, quantity: Int!): Store
     updateStore( _id: ID!, name: String!): Store      
