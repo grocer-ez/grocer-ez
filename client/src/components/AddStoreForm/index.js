@@ -27,9 +27,9 @@ const StoreForm = () => {
   console.log("Store", addStore);
 
   const handleChange = event => {
-    if (event.target.value) {
+    // if (event.target.value) {
       setName(event.target.value);
-    }
+    // }
   }; 
 
   const handleFormSubmit = async event => {
