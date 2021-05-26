@@ -1,13 +1,25 @@
 import React from 'react'
-// import SingleList from '../components/SingleList';
-// import Auth from '../utils/auth';
 import { useParams } from 'react-router-dom'
-import { useQuery } from '@apollo/react-hooks';
-// import { QUERY_STORE } from '../utils/queries';
-import { QUERY_STORE } from '../utils/queries'
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { QUERY_STORE } from '../utils/queries';
+import { REMOVE_ITEM } from '../utils/mutations';
+
+
 
 const List = props => {
-  // console.log("Props",props)
+
+  const [REMOVEITEM, { error }] = useMutation(REMOVE_ITEM, {
+    update(cache, { data: { REMOVEITEM } }) {
+      // read what's currently in the cache
+      const { me } = cache.readQuery({ query: QUERY_STORE });
+  
+      // prepend the newest thought to the front of the array
+      cache.writeQuery({
+        query: QUERY_STORE,
+        data: { me: [REMOVEITEM, ...me] }
+      });
+    }
+  });
 
   const { id: storeId } = useParams();
   console.log("StoreId", storeId)
@@ -16,11 +28,18 @@ const List = props => {
   });
   console.log("StoreData", data)
 
-  const store = data?.store || {};
-  console.log("Store", store);
+  function deleteitem(id) {
+    console.log(id, "storeID: ", storeId);
+    try {
+     REMOVEITEM({
+        variables: { storeId: storeId, itemId: id }
+    });
+} catch (e) {
+    console.error(e);
+  }
+    }
 
-  // const loggedIn = Auth.loggedIn();
-  console.log("Name", data);
+  const store = data?.store || {};
 
   return (
     <div className="container">
@@ -30,19 +49,25 @@ const List = props => {
       <span style={{ fontWeight: 700 }} className="text-light">
         {store.name}
       </span>{' '}
-      {/* thought on {thought.createdAt} */}
     </p>
     <div className="card-body">
       {store.list ?
         store.list.map((element, index) =>{
           return index % 2 ?
-          <div style={{ backgroundColor: "grey", color: "black"}}>
+          <div className="col" style={{ backgroundColor: "grey", color: "black"}}>
             <h3>{element.item}</h3>
             <p>Quantity: {element.quantity}</p>
+            <button onClick={() => deleteitem(element._id)}>
+                    ✗
+            </button>
+
             </div> :
-            <div style={{ backgroundColor: "white", color: "black"}}>
+            <div className="col" style={{ backgroundColor: "white", color: "black"}}>
             <h3>{element.item}</h3>
             <p>Quantity: {element.quantity}</p>
+            <button onClick={() => deleteitem(element._id)}>
+                    ✗
+            </button>
           </div>
         })
         : <p>No List found</p>

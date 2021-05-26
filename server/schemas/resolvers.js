@@ -80,6 +80,26 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
 
+    removeItem: async (parent, {storeId, itemId }, context) => {
+      if (context.user) {
+        return await Store.findOneAndUpdate( 
+          {_id: storeId}, 
+          {$pull: {list: {_id: itemId}}}, 
+          {new: true})        
+       }
+      throw new AuthenticationError('Not logged in');
+    },
+
+    clearList: async (parent, {storeId }, context) => {
+      if (context.user) {
+        return await Store.findOneAndUpdate( 
+          {_id: storeId}, 
+          {$pull: {list:{}}}, 
+          {new: true})        
+       }
+      throw new AuthenticationError('Not logged in');
+    },
+    
     updateList: async (parent, {_id, item, quantity }, context) => {
       if (context.user) {
         return await Store.findByIdAndUpdate( _id, {list: item}, {new: true})        
