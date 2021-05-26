@@ -43,7 +43,14 @@ const List = props => {
    }
    setList(list =>[...list, itemData]);
    setUserFormData({item: "", quantity: 0})
-   console.log(list, "LABEL")
+  }
+
+  const handleDeleteItem = (event) => {
+
+    event.preventDefault();
+    const result = list.filter(({item}) => item !== event.target.name)
+
+    setList(result)
 
   }
 
@@ -66,11 +73,13 @@ const List = props => {
           <div style={{ backgroundColor: "grey", color: "black"}}>
               <h3>{`${element.item}`}</h3>
             <p>Quantity: {`${element.quantity}`}</p>
+            <button name={element.item} onClick={handleDeleteItem}>Delete Item</button>
             </div> 
             : 
             <div style={{ backgroundColor: "white", color: "black"}}>
             <h3>{`${element.item}`}</h3>
             <p>Quantity: {`${element.quantity}`}</p>
+            <button name={element.item} onClick={handleDeleteItem}>Delete Item</button>
           </div>
        
         })
