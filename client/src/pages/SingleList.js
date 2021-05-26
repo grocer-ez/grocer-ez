@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_STORE } from '../utils/queries';
-import { REMOVE_ITEM } from '../utils/mutations';
+import { REMOVE_ITEM, UPDATE_ITEM } from '../utils/mutations';
 import AddListForm from '../components/AddListForm'
 
 
@@ -22,6 +22,17 @@ const List = props => {
     }
   });
 
+  const [UPDATEITEM] = useMutation(UPDATE_ITEM, {
+    update(cache, { data: { UPDATEITEM }}) {
+      const { item } = cache.readQuery({ query: QUERY_STORE });
+
+      cache.writeQuery({
+        query: QUERY_STORE, 
+        data: { item: [UPDATEITEM, ...item]}
+      });
+    }
+  });
+
   const { id: storeId } = useParams();
   const { data } = useQuery(QUERY_STORE, {
     variables: { id: storeId }, 
@@ -36,6 +47,16 @@ const List = props => {
     console.error(e);
     console.log(props)
   }
+    }
+
+    function updateitem(id) {
+      try{
+        UPDATEITEM({
+          variables: { storeId: storeId, itemId: id }
+        });
+      } catch (e) {
+        console.error(e);
+      }
     }
 
   const store = data?.store || {};
@@ -58,6 +79,9 @@ const List = props => {
             <p>Quantity: {element.quantity}</p>
             <button onClick={() => deleteitem(element._id)}>
                     ✗
+            </button> 
+            <button onClick={() => updateitem(element._id)}>
+                    🖊
             </button>
 
             </div> :
