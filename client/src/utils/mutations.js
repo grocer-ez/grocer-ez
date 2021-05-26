@@ -24,8 +24,8 @@ export const LOGIN = gql`
 
 
 export const ADD_STORE = gql`
-mutation addStore($_id: ID!, $name: String!) {
-  addStore(_id: $_id, name: $name) {
+mutation addStore($name: String!) {
+  addStore(name: $name) {
     _id
     name
     createdAt
@@ -73,19 +73,6 @@ mutation removeItem($storeId: ID!, $itemId: ID!) {
 }
 `;
 
-export const ADD_ITEM = gql`
-  mutation addItem($id: ID!) {
-    addItem(itemId: $id) {
-      _id
-      item {
-        _id
-      }
-    }
-  }
-`;
-
-
-
 export const CLEAR_LIST = gql`
 mutation clearList($storeId: ID!) {
   clearList(storeId: $storeId) {
@@ -97,6 +84,5 @@ mutation clearList($storeId: ID!) {
       quantity
     }
   }
-
 }
 `;
