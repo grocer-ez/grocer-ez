@@ -8,9 +8,12 @@ const StoreList = ({ stores }) => {
   }
   return (
     <div className='container center'>
+ 
+
       {stores &&
         stores.map(stores => (
-          <div key={stores.list._id} className="card mb-3">
+          <div>
+          <div key={stores.list._id} className="card col mb-3">
             <h2 className="card-header">
               <Link
               // should the link be to stores.name?
@@ -23,7 +26,7 @@ const StoreList = ({ stores }) => {
             </h2>
             <div className="card-body row">
 
-            <div >
+            <div>
               {stores.list ? 
                   //array.map() returns an array of stuff.
                   stores.list.map((element, index)=>{
@@ -39,11 +42,13 @@ const StoreList = ({ stores }) => {
                   }) 
                 : <p>No lists found.</p>}
               </div>
-
-                {/* insert store.list? here to display list item. Could just dispaly items 1-3 to make it mobile friendly? */}
             </div>
           </div>
+                  
+      </div>
         ))}
+
+
     </div>
   );
 };

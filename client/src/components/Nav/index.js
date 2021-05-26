@@ -42,7 +42,7 @@ function Nav() {
 
   return (
     <header className="container">
-    <nav className="navbar row grey">
+    <nav className="navbar row">
       <div className="row">
       <h1 className="center">
         <Link to="/Home">

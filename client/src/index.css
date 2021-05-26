@@ -16,6 +16,13 @@ body {
   max-height: 75%;
 } */
 
+nav {
+  font-size: 30px;
+	-webkit-text-stroke: 1px #F8F8F8;
+	text-shadow: 0px 1px 4px var(--dark);
+  font-style: italic;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -35,7 +42,8 @@ body {
   text-shadow: 1px 1px var(--primary);
   background-image: url("../src/assets/homepage.jpg");
   background-position: center;
-  background-size: 100%;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .border {
@@ -95,6 +103,8 @@ a {
   color: var(--light);
   text-decoration: none;
   font-weight: bold;
+  outline: var(--dark);
+  -webkit-text-stroke: 2px black;
 }
 
 
@@ -143,10 +153,6 @@ button:hover {
 button[disabled] {
   cursor: default;
   opacity: .8;
-}
-
-img {
-  max-width: 100%;
 }
 
 span[role="img"] {
@@ -241,7 +247,8 @@ input:focus {
 }
 
 .grey {
-  background-color: rgb(41, 41, 41);}
+  background-color: rgb(41, 41, 41);  
+}
 
 .card {
   width: 100%;
@@ -269,8 +276,8 @@ input:focus {
 .mobile {
   box-shadow: 1px 0px 5px var(--primary);
   padding: 20px;
-  width: 50%;
-  /* height: 50%; */
+  width: 500px;
+  height: 30%;
 }
 
 .error-text {
@@ -278,20 +285,21 @@ input:focus {
 }
 
 input {
-  background-color: black;
+  background-color: var(--dark);
   box-shadow: 1px 0px 5px var(--primary);
   margin-right: 10px;
+  color: var(--light);
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: white;
+  color: var(--light);
   opacity: 1; /* Firefox */
 }
 
 @media screen and (min-width: 780px) {
   
 
-form {
+#addStoreForm {
   margin-left: 25%;
   margin-right:25%;
   width: 50%;
@@ -307,5 +315,6 @@ form {
   .mobile {
     box-shadow: 1px 0px 5px var(--primary);
     width: 100%;
+    height: 200px;
   }
 }
